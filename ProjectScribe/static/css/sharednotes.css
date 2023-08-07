@@ -1,0 +1,133 @@
+.tm-nav {
+    position: fixed;
+    top: 0;
+    left: -1px;
+    z-index: 1000;  
+}
+
+.nav-item { list-style: none; }
+.tm-nav ul {
+    background-color: #444;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+}
+
+
+@media (max-width: 1200px) {
+    .tm-nav { width: 0; }
+    .tm-nav ul {
+        position: relative;
+        left: -280px;
+        flex-direction: column;
+        padding-top: 15px;
+        padding-bottom: 15px;        
+        width: 280px;
+        transition: all 0.5s ease;
+    }
+
+    .tm-nav ul.show { left: 0; }
+
+    .nav-link {
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .navbar-toggler {
+        display: block;
+        width: 50px;
+        height: 45px;
+        font-size: 1.2rem;
+        background-color: #444444;
+        border: none;
+        color: #999999;
+        outline: none;
+    }
+
+    .navbar-toggler:hover { color: #99CC99; }
+
+    .tm-content {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding: 50px 20px;
+    }
+
+    .tm-copyright { margin-left: 15px; }
+}
+
+@media (max-width: 992px) {
+    .registration-form { 
+        position: static;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .tm-gallery figure { width: 33.33%; }
+
+    figcaption h2 { font-size: 1.4rem; }
+
+    .tm-section { flex-direction: column-reverse; }
+
+    .tm-section-col {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .tm-parallax { min-height: 360px; }
+
+    #contact .tm-parallax {
+        margin-bottom: 425px;
+    }
+    
+    .mapouter {
+        top: 360px;
+        width: 100%;
+    }
+
+    .gmap-canvas { width: 100%; }
+
+    .tm-copyright {
+        margin-bottom: 0;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .tm-row { flex-direction: column; }
+
+    .tm-col {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .tm-media img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 560px) {
+    .tm-sm-mt-30 { margin-top: 30px; }
+}
+
+@media (max-width: 516px) {
+    .tm-gallery { display: block; }
+
+    .tm-gallery figure {
+        float: left;
+        width: 45%;
+        margin: 2.5%;
+        min-width: 1px;
+    }
+
+    figure h2 { font-size: 1rem; }
+}
+
+@media (max-width: 420px) {
+    .tm-media img {
+        width: 100px;
+        height: 100px;
+    }
+}

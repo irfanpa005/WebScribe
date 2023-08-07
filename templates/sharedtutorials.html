@@ -1,0 +1,52 @@
+{% extends 'indexbase.html' %}
+{% load static %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+<h3 class="tm-media-body sh-tutorials">Shared Tutorials</h3>
+{% for tutorial in tutorials %}
+<div class="tm-media">
+    <div class="tm-media-body">
+        <h5><a href="#" class="tm-text-title">{{tutorial.title}}</a></h5>
+        <p class="tm-text-small">{{tutorial.short_descr}}</p>
+        
+
+        {% comment %} <div id="iframe-container">
+            <iframe id="content-iframe" src="{{tutorial.link}}" frameborder="0"  style="padding: 0;"></iframe>
+        </div> {% endcomment %}
+
+        <div class="content-iframe">
+            <a href="{{tutorial.link}}">{{tutorial.link}}</a>
+        </div>
+
+        <div class="tm-text-secondary tm-media-span tm-text-small">
+            <span class="tm-text-left">Created By: {{ tutorial.owner }}</span>
+            <span class="tm-text-right">{{ tutorial.created_at }}</span>
+        </div>
+        
+        <hr class="tm-hr tm-mr">
+    </div>
+</div>
+{% endfor %}
+
+{% if tutorial.has_next %}
+<div class="tm-text-right">
+    <a href="?page={{ tutorial.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+</div>
+{% endif %}
+{% if notes.has_previous %}
+<div class="tm-text-right">
+  <a href="?page={{ tutorial.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+</div>
+{% endif %}
+
+{% endblock %}

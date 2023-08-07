@@ -1,0 +1,233 @@
+{% extends 'indexbase.html' %}
+{% load static %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+    <main>
+        <div id="left-col" class="tm-section">
+            <!-- Shared notes left -->
+            <div class="tm-section-col tm-content">
+                <h3 class="tm-media-body">Shared Notes</h3>
+                {% for note in notes %}
+                <div class="tm-media">
+                    <div class="tm-media-body">
+                        <h5><a href="{% url 'viewNote' note.pk %}" class="tm-text-title">{{note.title}}</a></h5>
+                        <div id="iframe-container">
+                            <iframe id="iframe-content" frameborder="0" srcdoc="{{note.content}}" style="padding: 0;"></iframe>
+                            <a id="iframe-href" href="{% url 'viewNote' note.pk %}"></a>
+                        </div>
+                        <div class="tm-text-secondary tm-media-span tm-text-small">
+                            <span class="tm-text-left">Created By: {{ note.noteowner }}</span>
+                            <span class="tm-text-right">{{ note.created_at }}</span>
+                        </div>
+                        <hr class="tm-hr tm-mr">
+                    </div>
+                </div>
+                {% endfor %}
+
+              <!-- paginator for shared noted -->  
+              {% if notes.has_next %}
+                <div class="tm-text-right">
+                    <a href="?page={{ notes.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+                </div>
+              {% endif %}
+              {% if notes.has_previous %}
+              <div class="tm-text-right">
+                  <a href="?page={{ notes.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+              </div>
+            {% endif %}
+              <!-- paginator end --> 
+
+            <!-- Shared notes End -->
+
+            <!-- Shared tutorials left -->
+            <h3 class="tm-media-body sh-tutorials">Shared Tutorials</h3>
+                {% for tutorial in tutorials %}
+                <div class="tm-media">
+                    <div class="tm-media-body">
+                        <h5><a href="#" class="tm-text-title">{{tutorial.title}}</a></h5>
+                        <p class="tm-text-small tut-descr">{{tutorial.short_descr}}</p>
+                        
+
+                        {% comment %} <div id="iframe-container">
+                            <iframe id="content-iframe" src="{{tutorial.link}}" frameborder="0"  style="padding: 0;"></iframe>
+                        </div> {% endcomment %}
+
+                        <div class="content-iframe">
+                            <a href="{{tutorial.link}}">{{tutorial.link}}</a>
+                        </div>
+
+                        <div class="tm-text-secondary tm-media-span tm-text-small">
+                            <span class="tm-text-left">Created By: {{ tutorial.owner }}</span>
+                            <span class="tm-text-right">{{ tutorial.created_at }}</span>
+                        </div>
+                        
+                        <hr class="tm-hr tm-mr">
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- paginator for shared tutorials --> 
+              {% if tutorial.has_next %}
+                <div class="tm-text-right">
+                    <a href="?page={{ tutorial.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+                </div>
+              {% endif %}
+              {% if notes.has_previous %}
+              <div class="tm-text-right">
+                  <a href="?page={{ tutorial.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+              </div>
+            {% endif %}
+              <!-- paginator end --> 
+
+            <!-- Shared tutorials end -->
+            </div>
+
+
+            <!-- BG,Reigister right -->
+            <div class="tm-section-col tm-parallax" data-parallax="scroll" data-image-src="{% static 'images/bg-03.jpg' %}">
+            </div>
+                <div class="registration-form"> 
+                    <h2>Register</h2>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="email" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Register">
+                    </form>
+                    Already have an account? <a href="">Log In here.</a>
+                </div>
+        </div> <!-- BG,Reigister End -->
+    </main>
+
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+    <script>
+        $(window).on("load", function() {
+            $('body').addClass('loaded');
+        });
+
+        $(function(){
+            
+            /*************** Navigation *****************/
+
+            const tmMainNav = $("#tm-main-nav");
+
+            tmMainNav.singlePageNav({
+                filter: ':not(.external)'
+            });
+
+            $('.navbar-toggler').click(function(e) {
+                e.stopPropagation();
+                tmMainNav.toggleClass('show');
+            });
+
+            $("html").click(function(e) {
+                $("#tm-main-nav").removeClass("show");
+            });
+
+            /****************** Smooth Scrolling *****************/
+
+            $(".tm-btn-next").on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        // window.location.hash = hash;
+                    });
+                }
+            });
+
+            $('.tm-brand-icon').on('click', function(event) {
+                $('html, body').animate({
+                        scrollTop: $('#intro').offset().top
+                    }, 800);
+            });
+
+            /****************** Gallery ******************/
+
+            const galleryItems = document.querySelector(".tm-gallery").children;
+            const itemsPerPage = 10;
+            const totalPages = Math.ceil(galleryItems.length / itemsPerPage);
+            const pageAttribute = 'data-page';
+
+            function setPagination(currentPage) {
+                for(let i = 1; i <= totalPages; i++) {
+                    var $pager = '';
+                    
+                    if(currentPage == i) {
+                        $pager = $('<a href="javascript:void(0);" class="active tm-paging-link" '+pageAttribute+'="'+i+'"></a>');
+                    } else {
+                        $pager = $('<a href="javascript:void(0);" class="tm-paging-link" '+pageAttribute+'="'+i+'"></a>');
+                    }
+
+                    $pager.html(i);
+
+                    $pager.click(function(){ 
+                        $('.tm-paging-link').removeClass("active");
+                        $(this).addClass('active');
+                        var page = $(this).eq(0).attr(pageAttribute);
+                        showItems(page);
+                    });
+
+                    $pager.appendTo($('.tm-paging'));
+                }
+            }
+
+            function showItems(currentPage) {
+                for(let i = 0; i < galleryItems.length; i++) {
+                    galleryItems[i].classList.remove("show");
+                    galleryItems[i].classList.add("hide");
+
+                    if(i >= (currentPage * itemsPerPage) - itemsPerPage && i < currentPage * itemsPerPage) {
+                        galleryItems[i].classList.remove("hide");
+                        galleryItems[i].classList.add("show");
+                    }
+                }
+            }
+
+            setPagination(1);
+            showItems(1);
+
+            /****************** Magnific Popup ***********/
+
+            $('.tm-gallery').magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+        });
+    </script>
+
+
+
+    <footer>
+        {% block page_scripts %}
+            <script src="{% static 'js/plugins.js' %}"></script>
+        {% endblock %}
+    </footer> 
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/createnote.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="container m1">
+        <form action="{% url 'notes:create_note' %}" method="post">
+            {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                    {{ field.label_tag }} <br> {{ field }}
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <button class="btn btn-info" type="submit">Save note</button>
+                </div>
+        </form>
+    </div>    
+
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock%}

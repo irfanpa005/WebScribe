@@ -1,0 +1,50 @@
+{% extends 'indexbase.html' %}
+{% load static %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div id="left-col" class="tm-section">
+            <!-- Shared notes left -->
+            <div class="tm-section-col tm-content">
+                <h3 class="tm-media-body">Shared Notes</h3>
+                {% for note in notes %}
+                <div class="tm-media">
+                    <div class="tm-media-body">
+                        <h5><a href="#" class="tm-text-title">{{note.title}}</a></h5>
+                        <div id="iframe-container">
+                            <iframe id="content-iframe" frameborder="0" srcdoc="{{note.content}}" style="padding: 0;"></iframe>
+                        </div>
+                        <div class="tm-text-secondary tm-media-span tm-text-small">
+                            <span class="tm-text-left">Created By: {{ note.noteowner }}</span>
+                            <span class="tm-text-right">{{ note.created_at }}</span>
+                        </div>
+                        <hr class="tm-hr tm-mr">
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% if notes.has_next %}
+                    <div class="tm-text-right">
+                        <a href="?page={{ notes.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+                    </div>
+                {% endif %}
+                {% if notes.has_previous %}
+                <div class="tm-text-right">
+                    <a href="?page={{ notes.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+            <!-- Shared notes End -->
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+<div class="container">
+    <nav class="tm-nav">
+
+        <ul id="tm-main-nav">
+            <a href="{% url 'index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo"></li></a>
+            <li class="nav-item">
+                <a href="{% url 'sharedNotes' %}" class="nav-link">
+                    Shared Notes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'sharedTutorials' %}" class="nav-link">
+                    Shared Tutorials
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

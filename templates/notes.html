@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/notes.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="sb-cover"> 
+    <div class="sidebar">
+        <div class="resizer"></div>
+        <div class="header">
+            <h3 onClick="viewNote({{note.id}})">Notes</h3>
+        </div>
+        <a href="{% url 'notes:create_note' %}">Create a new note</a> 
+        <ul>
+            {% for note in notes %}
+                {% comment %} <li><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></li> {% endcomment %}
+                <li data-object-id="{{note.pk}}" class="snote">{{ note.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div>
+    <p id="dispEl"></p>
+</div>
+<footer>
+    {% block page_scripts %}
+        <script src="{% static 'js/notes.js' %}"></script>
+    {% endblock %}
+</footer> 
+
+{% endblock%}
