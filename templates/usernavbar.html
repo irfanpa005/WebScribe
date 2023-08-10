@@ -11,6 +11,21 @@
         <ul id="tm-main-nav">
             <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo"></li></a>
             <li class="nav-item">
+                <a href="{% url 'notes:notes' %}" class="nav-link">
+                    Notes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    ToDo Tasks
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    Tutorials
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{% url 'userApp:sharedNotes' %}" class="nav-link">
                     Shared Notes
                 </a>

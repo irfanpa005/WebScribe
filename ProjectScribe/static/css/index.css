@@ -14,14 +14,22 @@ a:hover {  color: #9C9; }
 .tm-text-title { color: #eae180; text-decoration: none;white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 200px;}
 .tm-text-title:hover {  color: #9C9; text-decoration: none; }
 
+
+/* Navbar*/
+
+.navbar-toggler { display: none; }
+
 .tm-nav {
     position: fixed;
     top: 0;
     left: -1px;
     width: 50%;
-    z-index: 1000;  
+    z-index: 1000;
 }
 
+nav-600{
+    display: none;
+}
 
 .nav-item { list-style: none; }
 .tm-nav ul {
@@ -29,13 +37,18 @@ a:hover {  color: #9C9; }
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0;
+
 }
 
 #logo{
     height: 60px;
     width: 100px;
 }
+
+#logo-600{
+    display: none;
+}
+
 
 .nav-link {
     color: #c8c4c4;
@@ -47,6 +60,10 @@ a:hover {  color: #9C9; }
 .nav-link.current {
     color: #99CC99;
 }
+
+
+
+/* Section*/
 
 .tm-section { display: flex; margin: 0; padding: 0;}
 
@@ -101,16 +118,6 @@ a:hover {  color: #9C9; }
     float: right;
 }
 
-
-.tm-text-small { font-size: 0.9em; }
-.tm-text-center { text-align: center; }
-.tm-text-right { text-align: right; }
-.tm-text-primary { color: #99CC99; }
-.tm-text-secondary { color: #9999CC; }
-.tm-text-link { color: #999; }
-.tm-text-link:hover { color: #99CC99; }
-.tm-relative { position: relative; }
-
 .tm-parallax { min-height: 70px; }
 
 #contact .tm-parallax {
@@ -119,28 +126,9 @@ a:hover {  color: #9C9; }
 
 
 
-/* Registration form */
-.registration-form {
-    position: fixed;
-    bottom: 200px;
-    right: 150px;
-    width: 400px;
-    height: 400px;
-    margin-top: 0;
-    margin-bottom: 0;
-    background-color: #333;
-    color: #999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 15px;
-}
 
-form{
-    width: 100%;
-    padding: 10px;
-}
+/* Shared Notes */
+
 
 #iframe-container {
     border: 1px solid #ccc;
@@ -166,8 +154,6 @@ form{
     top:0; left:0; 
     display:inline-block;
     width:100%; height:150px; 
-    z-index:5;
-
 }
 
 p.tut-descr{
@@ -178,8 +164,44 @@ p.tut-descr{
 }
 
 
+.tm-text-small { font-size: 0.9em; }
+.tm-text-center { text-align: center; }
+.tm-text-right { text-align: right; }
+.tm-text-primary { color: #99CC99; }
+.tm-text-secondary { color: #9999CC; }
+.tm-text-link { color: #999; }
+.tm-text-link:hover { color: #99CC99; }
+.tm-relative { position: relative; }
+
+
+/* Registration form */
+.registration-form {
+    position: fixed;
+    bottom: 200px;
+    right: 150px;
+    width: 400px;
+    height: 400px;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #333;
+    color: #999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+form{
+    width: 100%;
+    padding: 10px;
+}
+
+
+
+
 @media (max-width: 1200px) {
-    .tm-nav { width: 100%; }
+
     /* .tm-nav ul {
         position: relative;
         left: -280px;
@@ -211,17 +233,46 @@ p.tut-descr{
 
     .navbar-toggler:hover { color: #99CC99; } */ */
 
+    .registration-form {
+        position: fixed;
+        bottom: 200px;
+        right: 100px;
+    }
+    
+
     .tm-content {
-        padding-left: 20px;
-        padding-right: 20px;
-        padding: 50px 20px;
+        padding: 100px 60px 70px 60px;
+        box-sizing: border-box;
     }
 
     .tm-copyright { margin-left: 15px; }
 }
 
+
+@media (max-width: 1150px) {
+
+    .registration-form {
+        position: fixed;
+        bottom: 200px;
+        right: 80px;
+        width: 400px;
+        height: 400px;
+
+    }
+
+    .tm-content {
+        padding: 100px 40px 70px 40px;
+        box-sizing: border-box;
+    }
+
+
+}
+
+
+
+
 @media (max-width: 1100px) {
-    /* .tm-nav { width: 100%; } */
+    .tm-nav { width: 100%; }
     /* .tm-nav ul {
         position: relative;
         left: -280px;
@@ -283,11 +334,15 @@ p.tut-descr{
 
 
 @media (max-width: 992px) {
-    .tm-nav { width: 100%; position: relative;}
+    .tm-nav ul {
+        position: relative;}
+        
     .registration-form { 
         position: static;
+        display: flex;
         margin-left: auto;
-        margin-right: 0;
+        margin-right: auto;
+        margin-top: 70px;
     }
 
     .tm-gallery figure { width: 33.33%; }
@@ -319,22 +374,50 @@ p.tut-descr{
         padding: 30px;
     }
 
-    .registration-form {
-        position:absolute;
-        top: 0;
-        bottom: 200px;
-        width: 80%;
-        height: 400px;
-        margin: auto;
-        background-color: #333;
-        color: #999999;
 
-        border-radius: 15px;
-    }
 }
 
 @media (max-width: 600px) {
-    .tm-row { flex-direction: column; }
+    
+    #logo-600{
+        height: 50px;
+        width: 100px;
+        background-color: #eae180;
+        display: inline;
+    }
+    
+    .nav-600 {
+        display: flex; /* Use flexbox to align items horizontally */
+        align-items: center; /* Vertically center items */
+        justify-content: space-between; /* Space out items evenly */
+    }
+
+    .tm-nav { width: 0; }
+    .tm-nav ul {
+        position: relative;
+        left: -280px;
+        flex-direction: column;
+        padding-top: 15px;
+        padding-bottom: 15px;        
+        width: 280px;
+        transition: all 0.5s ease;
+    }
+    
+
+    .tm-nav ul.show { left: 0; }
+
+    .nav-link {
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .tm-content {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding: 50px 20px;
+    }
+
 
     .tm-col {
         flex: 0 0 100%;
@@ -345,6 +428,20 @@ p.tut-descr{
         width: 150px;
         height: 150px;
     }
+
+
+    .navbar-toggler {
+        display: block;
+        width: 50px;
+        height: 45px;
+        font-size: 1.2rem;
+        background-color: #444444;
+        border: none;
+        color: #999999;
+        outline: none;
+    }
+    
+    .navbar-toggler:hover { color: #99CC99; }
 }
 
 @media (max-width: 560px) {
@@ -370,6 +467,8 @@ p.tut-descr{
         height: 100px;
     }
 }
+
+
 
 
 

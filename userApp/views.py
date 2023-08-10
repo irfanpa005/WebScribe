@@ -16,6 +16,9 @@ def index(request):
 
     return render(request, 'index.html',{'notes':single_page_notes, 'tutorials' :single_page_tutorials})
 
+def user_index(request):
+    return render(request, 'userindex.html')
+
 def view_note(request,note_id):
     note = Note.objects.get(pk=note_id)
     return render(request, 'viewnote.html',{'note':note,})

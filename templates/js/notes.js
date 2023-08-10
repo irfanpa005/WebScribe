@@ -59,9 +59,10 @@ function viewNote (event){
        // Update the noteDisplayDIv with the fetched data
          console.log(data.id)
          noteDisplayDIv.innerHTML = `
-         <h5><strong>Title: ${data.title}</strong></h5>
-         <p> ${data.content}</p>
-         <p>created at: ${data.created_at}</p>
+         <p>ID: ${data.id}</p>
+         <p>Name: ${data.title}</p>
+         <p>created: ${data.created_at}</p>
+         <p>content: ${data.content}</p>
      `;
  });
 
