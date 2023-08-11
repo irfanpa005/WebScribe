@@ -1,40 +1,42 @@
 {% load static %}
-<div class="container">
-    <nav class="tm-nav">
-        <div class="nav-600">
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo-600"></li></a>
-        </div>
-        
-        <ul id="tm-main-nav">
-            <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo"></li></a>
-            <li class="nav-item">
-                <a href="{% url 'notes:notes' %}" class="nav-link">
-                    Notes
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    ToDo Tasks
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    Tutorials
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'userApp:sharedNotes' %}" class="nav-link">
-                    Shared Notes
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'userApp:sharedTutorials' %}" class="nav-link">
-                    Shared Tutorials
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
+<nav class="tm-nav">
+    <div class="nav-600">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo-600"></li></a>
+    </div>
+    
+    <ul id="tm-main-nav">
+        {% url 'notes:notes' as notes %}
+        {% url 'toDo:allTasks' as toDo %}
+        {% url 'notes:tutorials' as tutorials %}
+
+        <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo"></li></a>
+        <li class="nav-item">
+            <a href="{{notes}}" {% if request.path == notes %}class="active-nav"{% endif %} class="nav-link">
+                Notes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{toDo}}" {% if request.path == toDo %}class="active-nav"{% endif %} class="nav-link">
+                ToDo Tasks
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{tutorials}}" {% if request.path == tutorials %}class="active-nav"{% endif %} class="nav-link">
+                Tutorials
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'userApp:sharedNotes' %}" class="nav-link">
+                Shared Notes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'userApp:sharedTutorials' %}" class="nav-link">
+                Shared Tutorials
+            </a>
+        </li>
+    </ul>
+</nav>

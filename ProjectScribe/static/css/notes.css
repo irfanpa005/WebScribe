@@ -6,7 +6,7 @@
      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
  }
  
- html, .main {
+ html, main {
     width: 100%;
     height: 100%;
     user-select: none;
@@ -14,6 +14,7 @@
     background-color: #ffffff;
     /* background-image: url('https://img.freepik.com/free-vector/abstract-yellow-orange-watercolor-texture-background_1017-17542.jpg?w=740&t=st=1690862332~exp=1690862932~hmac=45ba50154bdd3219f52a1a11c4cc1df9d591a69bee8ca34492aa591f44eac17a'); */
  }
+
 
  .sidebar {
     width: 250px;
@@ -121,3 +122,10 @@
    color: #fffdfa;
    background-color: rgb(154, 88, 12);
 }
+
+
+
+
+/* Navbar*/
+
+

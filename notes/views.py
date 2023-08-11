@@ -33,3 +33,6 @@ def create_note(request):
     else:
         form = NoteForm()
     return render(request, 'createnote.html', {'form': form})
+
+def tutorials(request):
+    return render(request, 'tutorials.html')

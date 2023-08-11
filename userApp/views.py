@@ -4,12 +4,12 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    notes = Note.objects.filter(is_shared=True)
+    notes = Note.objects.filter(is_shared=True).order_by('-created_at')
     paginator_n = Paginator(notes,3)
     page_no_n = request.GET.get('page')
     single_page_notes = paginator_n.get_page(page_no_n)
 
-    tutorials = Tutorial.objects.filter(is_shared=True)
+    tutorials = Tutorial.objects.filter(is_shared=True).order_by('-created_at')
     paginator_t = Paginator(tutorials,3)
     page_no_t = request.GET.get('page')
     single_page_tutorials = paginator_t.get_page(page_no_t)

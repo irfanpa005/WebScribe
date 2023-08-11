@@ -59,7 +59,7 @@ function viewNote (event){
        // Update the noteDisplayDIv with the fetched data
          console.log(data.id)
          noteDisplayDIv.innerHTML = `
-         <h5><strong>Title: ${data.title}</strong></h5>
+         <h3><strong>Title: ${data.title}</strong></h3>
          <p> ${data.content}</p>
          <p>created at: ${data.created_at}</p>
      `;
@@ -71,11 +71,8 @@ const notes = document.querySelectorAll('.snote');
 notes.forEach(note => {
    note.addEventListener('click' , viewNote);
 });
-
-
-
-
 // << --- Single Note Display End--->>
+
 
 })
 

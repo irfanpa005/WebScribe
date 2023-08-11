@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_styles %}
-    <link rel="stylesheet" href="{% static 'css/sharednotes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shared_note_tut.css' %}">
 {% endblock %}
 
 {% block extrahead %}
@@ -61,10 +61,10 @@
             <div class="col-lg-6">
                 <div class="tm-media">
                     <div class="tm-media-body">
-                        <h5><a href="{% url 'viewNote' note.pk %}" class="tm-text-title">{{note.title}}</a></h5>
+                        <h5><a href="{% url 'userApp:viewNote' note.pk %}" class="tm-text-title">{{note.title}}</a></h5>
                         <div id="iframe-container">
                             <iframe id="iframe-content" frameborder="0" srcdoc="{{note.content}}" style="padding: 0;"></iframe>
-                            <a id="iframe-href" href="{% url 'viewNote' note.pk %}"></a>
+                            <a id="iframe-href" href="{% url 'userApp:viewNote' note.pk %}"></a>
                         </div>
                         <div class="tm-text-secondary tm-media-span tm-text-small">
                             <span class="tm-text-left">Created By: {{ note.noteowner }}</span>
@@ -99,28 +99,5 @@
 
     <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <script>
-        $(window).on("load", function() {
-            $('body').addClass('loaded');
-        });
-
-        $(function(){
-            
-            /*************** Navigation *****************/
-
-            const tmMainNav = $("#tm-main-nav");
-
-            $('.navbar-toggler').click(function(e) {
-                e.stopPropagation();
-                tmMainNav.toggleClass('show');
-            });
-
-            $("html").click(function(e) {
-                $("#tm-main-nav").removeClass("show");
-            });
-        });
-    </script>
-
-
+    <script src="{% static 'js/togglebar-index.js' %}"></script>
 {% endblock %}
