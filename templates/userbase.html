@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="{% static 'css/userindex.css' %}">
     {% comment %} <script src="{% static 'js/userindex.js' %}"></script> {% endcomment %}
     <script src="{% static 'js/togglebar-index.js' %}"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
     {% block extra_styles %}
     {% endblock %}
 </head>
@@ -21,7 +26,7 @@
         {% include 'usernavbar.html' %}
     </div>
     
-    <div class="container" id="main-body">
+    <div id="main-body" style="height:600px;">
         {% block body %}
 
         {% endblock%}

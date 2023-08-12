@@ -7,7 +7,7 @@
         <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo-600"></li></a>
     </div>
     
-    <ul id="tm-main-nav">
+    <ul id="tm-main-nav" style="margin: 0;">
         {% url 'notes:notes' as notes %}
         {% url 'toDo:allTasks' as toDo %}
         {% url 'notes:tutorials' as tutorials %}
@@ -36,6 +36,11 @@
         <li class="nav-item">
             <a href="{% url 'userApp:sharedTutorials' %}" class="nav-link">
                 Shared Tutorials
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                Logout
             </a>
         </li>
     </ul>

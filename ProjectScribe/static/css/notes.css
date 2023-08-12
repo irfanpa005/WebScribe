@@ -1,24 +1,32 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
  }
+ */
+
  
- html, main {
+main {
     width: 100%;
     height: 100%;
     user-select: none;
     display: flex;
-    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, ;
+    
+
     /* background-image: url('https://img.freepik.com/free-vector/abstract-yellow-orange-watercolor-texture-background_1017-17542.jpg?w=740&t=st=1690862332~exp=1690862932~hmac=45ba50154bdd3219f52a1a11c4cc1df9d591a69bee8ca34492aa591f44eac17a'); */
  }
-
+ 
 
  .sidebar {
     width: 250px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
     position: relative;
     background-color: #cccaca;
@@ -34,14 +42,16 @@
     background-color: #8a0505;
  }
  
- .header {
-    padding: 22px 11px;
+.header {
+    padding: 15px 20px;
     background-color: #fff;
 
  }
- 
+
  .header h3 {
     color: #2e2e9b;
+    letter-spacing: 1px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
  }
  
  .header h3, ul li {
@@ -49,42 +59,26 @@
     overflow: hidden;
     text-overflow: ellipsis;
  }
- 
- ul {
-    padding: 11px 0px;
-    list-style: none;
- }
- 
- ul li {
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 5px 11px;
- }
- 
- ul li:hover {
-    background-color: #fffbfb;
-    color: #8a0505;
- }
- 
- /* .rs-content {
-    flex-grow: 1;
-    padding: 3% 22px;
-    text-align: center;
-    background-color: #555;
- }
-  */
- 
- h1 {
-    color: #fff;
-    font-weight: 500;
-    text-transform: uppercase;
- }
+
+ .sidebar> ul {
+   list-style: none;
+   padding-inline-start: 20px;
+   padding-top: 1em;
+}
+
+.sidebar > ul > li {
+   cursor: pointer;
+}
+
+.sidebar > ul > li:hover {
+   background-color: #fffbfb;
+   color: #8a0505;
+}
 
 .cr-note{ 
    background-color: none;
    padding: 10px;
-   font-size: 1em;
+   font-size: 0.8em;
    width: 100%;
    text-align: left;
    margin-left: 20px;
@@ -118,14 +112,8 @@
    font-size: 0.9em;
    width: 100%;
    text-align: left;
-   margin-left: 20px;
    color: #fffdfa;
    background-color: rgb(154, 88, 12);
 }
-
-
-
-
-/* Navbar*/
 
 
