@@ -1,19 +1,14 @@
-{% extends 'indexbase.html' %}
+{% extends 'userbase.html' %}
 {% load static %}
 
 {% block extra_styles %}
-    <link rel="stylesheet" href="{% static 'css/shared_note_tut.css' %}">
+    <link rel="stylesheet" href="{% static 'userindex.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
-
-{% block extrahead %}
-<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
-{{ block.super }}
-{% endblock %}
-
 
 {% block body %}
 <main>
-    <div class="container" style="margin-top: 80px;">
+    <div class="container";>
         <h3 class="tm-media-body">Shared Notes</h3>
         <div class="row">
             {% for note in notes %}
@@ -56,7 +51,4 @@
 
 </main>
 
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-    <script src="{% static 'js/togglebar-index.js' %}"></script>
 {% endblock %}

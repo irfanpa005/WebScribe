@@ -1,0 +1,85 @@
+html, body { overflow-x: hidden;  height: 100%;}
+body { 
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    margin-top: 30px;
+}
+
+
+.pri-Row > ul{
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    width: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bolder;
+    color: rgb(247, 225, 198);
+}
+
+.pri-Row > ul > li {
+    padding: 5px 20px;
+    font-size: 15px;
+    background-color: rgb(128, 8, 32);
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+
+.task-card{
+    padding-top: 30px;
+
+}
+
+.custom-high-priority{background-color: rgb(169, 56, 12); color: rgb(173, 213, 133);}
+.custom-medium-priority{background-color: rgb(227, 223, 0);}
+.custom-low-priority{background-color: rgb(150, 234, 122);}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    color: azure;
+    white-space: nowrap;
+    background-color: rgb(117, 120, 149);
+}
+
+.title-txt{
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.priority-txt{
+    flex-shrink: 0;
+    font-size: 15px;
+
+}
+
+.card-text{
+    height: 100px;
+    font-size: 15px;
+}
+
+.card-text-due{
+    padding: 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+.card-body > a{
+    font-size: 15px;
+}

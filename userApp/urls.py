@@ -8,5 +8,6 @@ urlpatterns=[
     path('shared_notes/',views.shared_notes, name="sharedNotes"),
     path('shared_tutorials/',views.shared_tutorials, name="sharedTutorials"),
     path('view_note/<int:note_id>/',views.view_note, name="viewNote"),
-    path('user/',views.user_index, name="userIndex"),
+    path('user_shared_notes/',views.user_shared_notes, name="userSharedNotes"),
+    path('user_shared_tutorials/',views.user_shared_tutorials, name="userSharedTutorials"),
 ]

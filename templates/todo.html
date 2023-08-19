@@ -3,10 +3,38 @@
 
 
 {% block extra_styles %}
-
+    <link rel="stylesheet" href="{% static 'css/todo.css' %}">
 {% endblock %}
 
 
 {% block body %}
-    toDo tasks
+    <main class="container">
+        <div class="pri-Row">
+            <ul>
+                <li>Group By Priority</li>
+                <li>Sort By Date ↑</li>
+                <li>Sort By Date ↓</li>
+            </ul>
+        </div>
+        <div class=" row td-displEl">
+          {% for task in tasks %}
+            <div class="col-lg-4 task-card">
+                <div class="card{% if task.priority == 'high' %} custom-high-priority {% elif task.priority == 'medium' %} custom-medium-priority {% elif task.priority == 'low' %} custom-low-priority {% endif %}">
+                    <div class="card-header">
+                      <span class="title-txt">{{task.title}}</span>
+                      <span class="priority-txt">Priority: {{task.priority}}</span>
+                    </div>
+                    <div class="card-body">
+                      {% comment %} <h5 class="card-title"></h5> {% endcomment %}
+                      <p class="card-text">{{task.details}}</p>
+                      <p class="card-text-due">Due date: {{task.due_date}}</p>
+                      <a href="#" class="btn btn-info">Edit</a>
+                      <a href="#" class="btn btn-danger">Delete</a>
+                      <a href="#" class="btn btn-success">Done</a>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
 {% endblock  %}

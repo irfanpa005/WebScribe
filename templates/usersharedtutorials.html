@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'userindex.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock%}
-
+{% endblock %}
 
 {% block body %}
+
 <main>
     <div class="container">
         <h3 class="tm-media-body sh-tutorials">Shared Tutorials</h3>
@@ -51,4 +52,5 @@
     </div>
     {% endif %}
 </div>
+
 {% endblock %}

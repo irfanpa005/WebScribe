@@ -7,29 +7,31 @@
  }
  */
 
+ body{overflow: hidden;}
+
  
 main {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     user-select: none;
     display: flex;
     margin: 0;
     padding: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, ;
-    
-
     /* background-image: url('https://img.freepik.com/free-vector/abstract-yellow-orange-watercolor-texture-background_1017-17542.jpg?w=740&t=st=1690862332~exp=1690862932~hmac=45ba50154bdd3219f52a1a11c4cc1df9d591a69bee8ca34492aa591f44eac17a'); */
  }
- 
+
 
  .sidebar {
     width: 250px;
     height: 100%;
+    left: 0;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     position: relative;
     background-color: #cccaca;
+    
  }
  
  .resizer {
@@ -54,6 +56,8 @@ main {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
  }
  
+
+
  .header h3, ul li {
     white-space: nowrap;
     overflow: hidden;
@@ -64,10 +68,18 @@ main {
    list-style: none;
    padding-inline-start: 20px;
    padding-top: 1em;
+   padding-inline-end: 20px;
 }
 
 .sidebar > ul > li {
    cursor: pointer;
+   
+}
+
+ul > li.active-li {
+   background-color: #075298;
+   z-index: 1000;
+   
 }
 
 .sidebar > ul > li:hover {
@@ -76,15 +88,18 @@ main {
 }
 
 .cr-note{ 
-   background-color: none;
    padding: 10px;
    font-size: 0.8em;
-   width: 100%;
    text-align: left;
-   margin-left: 20px;
-   color: #410492;
-   background-color: rgb(235, 235, 27);
+   color: #f5f2f9;
+   background-color: rgb(155, 7, 71);
    }
+
+.sidebar >a {
+   margin-left: 20px;
+   margin-right: 20px;
+   box-sizing: border-box;
+}
 
 .search-bar>form{
    display: flex;
@@ -97,23 +112,78 @@ main {
 }
 
 .search-bar>form>input{
-   padding: 5px 10px;
+   padding:8px 10px;
    margin: 5px 0px;
    border: 0px solid white;
    border-radius: 5px;
+   outline: none;
+
 }
+
+#search-word{
+   font-size: 0.8em;
+   
+}
+
+.dispEl-div{
+   overflow: auto;
+   flex: 1;
+}  
 
 #dispEl{
    padding: 20px;
+   overflow: auto;
 }
 
 .snote{
    padding: 10px;
-   font-size: 0.9em;
+   font-size: 0.8em;
    width: 100%;
    text-align: left;
    color: #fffdfa;
    background-color: rgb(154, 88, 12);
 }
 
+#sbToggle{
+   display: none;
+}
 
+.sb-icon {
+   display: none;
+}
+
+
+@media all and (max-width: 600px) {
+   #sbToggle{
+      display: block;
+   }
+
+   .sb-icon {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      padding: 10px;
+      cursor: pointer;
+      display: flex;
+      transform: translateY(-50%);
+      background-color: #444;
+      padding: 20px 8px;
+}
+
+   
+   div.sb-cover{
+      width: 90%;
+   }
+
+   .sb-cover{
+      display: none;
+   }
+
+   .sidebar{
+      width: 100%;
+   }
+
+   .resizer{
+      width: 3px;
+   }
+}

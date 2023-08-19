@@ -1,8 +1,8 @@
-{% extends 'indexbase.html' %}
+{% extends 'userbase.html' %}
 {% load static %}
 
 {% block extra_styles %}
-    <link rel="stylesheet" href="{% static 'css/shared_note_tut.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
 {% block extrahead %}
@@ -12,8 +12,10 @@
 
 
 {% block body %}
-    <div class="container" style="padding-top: 5em;">
-        {{note.content | safe}}
-    </div>
+    <main>
+        <div class="container">
+            {{note.content | safe}}
+        </div>
+    </main>
     <script src="{% static 'js/togglebar-index.js' %}"></script>
 {% endblock %}

@@ -1,18 +1,20 @@
 {% load static %}
+<div class="nav-600">
+    <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <a href="{% url 'notes:notes' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo-600"></li></a>
+</div>
+
 <nav class="tm-nav">
-    <div class="nav-600">
-        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo-600"></li></a>
-    </div>
-    
     <ul id="tm-main-nav" style="margin: 0;">
         {% url 'notes:notes' as notes %}
         {% url 'toDo:allTasks' as toDo %}
         {% url 'notes:tutorials' as tutorials %}
+        {% url 'userApp:userSharedNotes' as userSharedNotes %}
+        {% url 'userApp:userSharedTutorials' as userSharedTutorials %}
 
-        <a href="{% url 'userApp:index' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo"></li></a>
+        <li class="nav-item"><a href="{% url 'notes:notes' %}"><img src="{% static 'images/logo3.png' %}" id="logo"></a></li>
         <li class="nav-item">
             <a href="{{notes}}" {% if request.path == notes %}class="active-nav"{% endif %} class="nav-link">
                 Notes
@@ -29,18 +31,18 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{% url 'userApp:sharedNotes' %}" class="nav-link">
+            <a href="{% url 'userApp:userSharedNotes' %}" {% if request.path == userSharedNotes %}class="active-nav"{% endif %} class="nav-link">
                 Shared Notes
             </a>
         </li>
         <li class="nav-item">
-            <a href="{% url 'userApp:sharedTutorials' %}" class="nav-link">
+            <a href="{{userSharedTutorials}}" {% if request.path == userSharedTutorials %}class="active-nav"{% endif %} class="nav-link">
                 Shared Tutorials
             </a>
         </li>
         <li class="nav-item">
             <a href="" class="nav-link">
-                Logout
+                Logout user
             </a>
         </li>
     </ul>

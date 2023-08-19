@@ -8,19 +8,20 @@
 {% block body %}
 <main>
     <div class="sb-cover">
-        <div class="sidebar">
+        <div class="sidebar" id="sdb">
             <div class="resizer"></div>
             <div class="header">
                 <h3 onClick="viewNote({{note.id}})">Notes</h3>
             </div>
             <div class="search-bar">
-                <form>
-                    <input type="text">
-                    <input type="submit" class="btn btn-primary" name="Search" value="Search">
+                <form action="{% url 'notes:userNoteSearch' %}" id="searchform" method="POST">
+                    {% csrf_token %}
+                    <input type="text" id="search-word" name="search_keyword">
+                    <input type="submit" class="btn btn-primary" id="search-btn" value="Search">
                 </form>
             </div>
-            <a href="{% url 'notes:create_note' %}" class="cr-note badge">Create a new note</a> 
-            <ul>
+            <a href="{% url 'notes:create_note' %}" class="cr-note badge" id="createNote">Create a new note</a> 
+            <ul id="noteDisplUl">
                 {% for note in notes %}
                     <li data-object-id="{{note.pk}}" class="snote badge">{{ note.title }}</li>
                 {% endfor %}
@@ -29,30 +30,10 @@
     </div>
     <div class="dispEl-div">
         <p id="dispEl"></p>
+    </div>
+    <div class="sb-icon">
+        <i class="fa-solid fa-list fa-2xl" style="color:white;" id="sbToggle"></i>
     </div> 
-    {% comment %} <div class="sb-cover"> 
-        <div class="sidebar">
-            <div class="resizer"></div>
-            <div class="header">
-                <h3 onClick="viewNote({{note.id}})">Notes</h3>
-            </div>
-            <div class="search-bar">
-                <form>
-                    <input type="text">
-                    <input type="submit" class="btn btn-primary" name="Search" value="Search">
-                </form>
-            </div>
-            <a href="{% url 'notes:create_note' %}" class="cr-note badge">Create a new note</a> 
-            <ul>
-                {% for note in notes %}
-                    <li data-object-id="{{note.pk}}" class="snote badge">{{ note.title }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-    <div class="dispEl-div">
-        <p id="dispEl"></p>
-    </div> {% endcomment %}
 </main>
 <footer>
     {% block page_scripts %}
