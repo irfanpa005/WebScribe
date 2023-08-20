@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'toDo',
     'ckeditor',
     'ckeditor_uploader',
+    'active_link',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

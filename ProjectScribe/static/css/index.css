@@ -172,7 +172,7 @@ p.tut-descr{
 .tm-text-link { color: #999; }
 .tm-text-link:hover { color: #99CC99; }
 .tm-relative { position: relative; }
-
+.text-white { color: #ffffff; }
 
 /* Registration form */
 .registration-form {

@@ -1,4 +1,5 @@
 {% load static %}
+{% load active_link_tags %}
 <div class="nav-600">
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
         <i class="fa-solid fa-bars"></i>
@@ -7,7 +8,7 @@
 </div>
 
 <nav class="tm-nav">
-    <ul id="tm-main-nav" style="margin: 0;">
+    <ul id="tm-main-nav" style="margin: 0;" class="navitemsicons">
         {% url 'notes:notes' as notes %}
         {% url 'toDo:allTasks' as toDo %}
         {% url 'notes:tutorials' as tutorials %}
@@ -16,33 +17,34 @@
 
         <li class="nav-item"><a href="{% url 'notes:notes' %}"><img src="{% static 'images/logo3.png' %}" id="logo"></a></li>
         <li class="nav-item">
-            <a href="{{notes}}" {% if request.path == notes %}class="active-nav"{% endif %} class="nav-link">
+            <a href="{{notes}}" class="nav-link {% active_link 'notes:notes' 'active-nav' strict=True%}">
                 Notes
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{toDo}}" {% if request.path == toDo %}class="active-nav"{% endif %} class="nav-link">
+            <a href="{{toDo}}" class="nav-link {% active_link 'toDo:allTasks' 'active-nav' %}">
                 ToDo Tasks
             </a>
+
         </li>
         <li class="nav-item">
-            <a href="{{tutorials}}" {% if request.path == tutorials %}class="active-nav"{% endif %} class="nav-link">
+            <a href="{{tutorials}}"  class="nav-link {% active_link 'notes:tutorials' 'active-nav' strict=True%}">
                 Tutorials
             </a>
         </li>
         <li class="nav-item">
-            <a href="{% url 'userApp:userSharedNotes' %}" {% if request.path == userSharedNotes %}class="active-nav"{% endif %} class="nav-link">
+            <a href="{{userSharedNotes}}"  class="nav-link {% active_link 'userApp:userSharedNotes' 'active-nav' %}">
                 Shared Notes
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{userSharedTutorials}}" {% if request.path == userSharedTutorials %}class="active-nav"{% endif %} class="nav-link">
+            <a href="{{userSharedTutorials}}"  class="nav-link {% active_link 'userApp:userSharedTutorials' 'active-nav' %}">
                 Shared Tutorials
             </a>
         </li>
-        <li class="nav-item">
-            <a href="" class="nav-link">
-                Logout user
+        <li class="nav-item nav-logout">
+            <a href="{% url 'userApp:logout' %}" class="nav-logout">
+                Logout <br> {{request.user.username}}
             </a>
         </li>
     </ul>

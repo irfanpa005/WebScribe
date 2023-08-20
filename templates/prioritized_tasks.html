@@ -1,0 +1,57 @@
+{% extends 'userbase.html' %}
+{% load static %}
+
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/todo.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <main class="container">
+        <div class="pri-Row">
+            <ul>
+                <li><a href="">All Tasks</a></li>
+                <li><a href="">Group By Priority</a></li>
+                <li><a href="">Sort By Date ↑</a></li>
+                <li><a href="">Sort By Date ↓</a></li>
+            </ul>
+        </div>
+
+        <div>
+          <h2>All Tasks</h2>
+        </div>
+
+        <div class=" row td-displEl">
+          {% for task in tasks %}
+            <div class="col-lg-4 task-card">
+                <div class="card{% include 'card_color.html' %}">
+                    <div class="card-header">
+                      <span class="title-txt">{{task.title}}</span>
+                      <span class="priority-txt">Priority: {{task.priority}}</span>
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">{{task.details}}</p>
+                      <div class="cb-lower">
+                          <div class="cb-bottom-left">
+                              <div>
+                                <p class="card-text-due">Due date: {{task.due_date}}</p>
+                              </div>
+                              <div>
+                                <a href="#" class="btn btn-info">Edit</a>
+                                <a href="#" class="btn btn-danger">Delete</a>
+                                <a href="#" class="btn btn-success">Done</a>
+                              </div>
+                          </div>
+                          <div class="cb-bottom-right">
+                            <p> <span class="day-count">{{task.remaining_days}}</span><br>days remianing<p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock  %}

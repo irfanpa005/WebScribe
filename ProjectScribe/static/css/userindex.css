@@ -23,7 +23,6 @@ a:hover {  color: #9C9; text-decoration: none; }
 .nav-600{display: none;}
 .nav-item { list-style: none; display: flex;}
 
-
 .tm-nav {
     top:0;
     position: fixed;
@@ -65,12 +64,31 @@ a:hover {  color: #9C9; text-decoration: none; }
     align-items: center;
     transition: background-color 0.3s;
 
-
 }
+
 .nav-link:hover {
     background-color: #f5f5f5; 
 }
 
+li.nav-logout {
+    color: #e9e3e3;
+    text-align: left;
+    width: 120px;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 0px 5px;
+    transition: background-color 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+}
+
+li.nav-logout:hover {
+    background-color: #e9e3e3;
+    color: #772006;
+}
 
  .active-nav{
     background-color: #f5f5f5; 
@@ -88,6 +106,7 @@ a:hover {  color: #9C9; text-decoration: none; }
     justify-content: center;
 
 }
+
 
 @media all and (max-width: 1020px) {
     #tm-main-nav{flex-wrap: wrap;}
@@ -142,6 +161,11 @@ a:hover {  color: #9C9; text-decoration: none; }
         padding-bottom: 10px;
         width: 100%;
         font-size: 18px;
+    }
+
+    li.nav-logout {
+        width: 100%;
+        text-align: center;
     }
 
     .navbar-toggler {

@@ -94,28 +94,22 @@
             <div class="tm-section-col tm-parallax" data-parallax="scroll" data-image-src="{% static 'images/bg-03.jpg' %}">
             </div>
                 <div class="registration-form">
-
-                    <h2>Register</h2>
-                    <form action="{% url 'userApp:registration'%}" method="POST">
+                   
+                    <h2>Login</h2>
+                    <form action="" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input class="form-control" autofocus type="text" name="username" placeholder="Username" required>
+                            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="email" name="email" placeholder="Email Address" required>
+                            <input class="form-control" type="password" name="password" placeholder="Password">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" type="password" name="password" placeholder="Password" required>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Register">
+                        <input class="btn btn-primary" type="submit" value="Sign In">
                     </form>
                     {% for message in messages %}
                         <div class="text-white"><small>{{ message }}</small></div>
                     {% endfor %}
-                    Already have an account? <a href="{% url 'userApp:indexLogin' %}">Log In here.</a>
+                    Do not have an account?<a href="{% url 'userApp:index' %}">Register Here.</a>
                 </div>
         </div> <!-- BG,Reigister End -->
     </main>

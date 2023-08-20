@@ -1,6 +1,13 @@
-from django.shortcuts import render
-from notes.models import Note,Tutorial
+from django.db import IntegrityError
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.contrib.auth import login,logout, authenticate
+from django.urls import reverse
+from notes.models import Note,Tutorial, User
 from django.core.paginator import Paginator
+from .forms import RegistrationForm
+from django.contrib import messages
+
 
 # Create your views here.
 def index(request):
@@ -15,6 +22,80 @@ def index(request):
     single_page_tutorials = paginator_t.get_page(page_no_t)
 
     return render(request, 'index.html',{'notes':single_page_notes, 'tutorials' :single_page_tutorials})
+
+
+def registration(request):
+    if request.method == 'POST':
+        username = request.POST["username"]
+        email = request.POST["email"]
+
+        # Ensure password matches confirmation
+        password = request.POST["password"]
+        confirmation = request.POST["confirmation"]
+    if password != confirmation:
+        messages.error(request, "! Password missmatch.")
+        return redirect("userApp:index")
+    try:
+        user = User.objects.create_user(username, email, password)
+        user.save()
+    except IntegrityError:
+        messages.error(request, "! username or email exists")
+        return redirect("userApp:index")
+    login(request, user)
+    return redirect('notes:notes')
+       
+
+def index_login(request):
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
+        try:
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('notes:notes')
+            else:
+                messages.error(request, "Invalid credentials")
+
+        except AuthenticationFailed as e:
+            messages.error(request, f"Authentication failed: {e}")
+            return redirect('userApp:indexLogin')
+
+        else:
+            return redirect('userApp:indexLogin')
+    else:     
+        notes = Note.objects.filter(is_shared=True).order_by('-created_at')
+        paginator_n = Paginator(notes,3)
+        page_no_n = request.GET.get('page')
+        single_page_notes = paginator_n.get_page(page_no_n)
+
+        tutorials = Tutorial.objects.filter(is_shared=True).order_by('-created_at')
+        paginator_t = Paginator(tutorials,3)
+        page_no_t = request.GET.get('page')
+        single_page_tutorials = paginator_t.get_page(page_no_t)
+
+    return render(request, 'index_login.html',{'notes':single_page_notes, 'tutorials' :single_page_tutorials})
+
+
+def login_user(request):
+    pass
+        
+
+def logout_user(requset):
+    logout(requset)
+    return redirect('userApp:index')
+
+# def register(request):
+#     if request.method == 'POST':
+#         form = RegistrationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             # Log the user in after registration
+#             login(request, user)
+#             return redirect('notes:notes')  # Redirect to the user's profile page or any other page
+#     else:
+#         form = RegistrationForm()
+#     return render(request, 'index', {'form': form})
 
 
 def view_note(request,note_id):

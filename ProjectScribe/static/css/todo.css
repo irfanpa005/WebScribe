@@ -35,13 +35,18 @@ main{
 
 }
 
-
-.task-card{
-    padding-top: 30px;
-
+.pri-Row > ul > li:hover {
+    background-color: rgb(9, 47, 34);
 }
 
-.custom-high-priority{background-color: rgb(169, 56, 12); color: rgb(173, 213, 133);}
+
+
+.task-card{
+    margin-bottom: 30px;
+    
+}
+
+.custom-high-priority{background-color: rgb(232, 152, 152); color: rgb(173, 213, 133);}
 .custom-medium-priority{background-color: rgb(227, 223, 0);}
 .custom-low-priority{background-color: rgb(150, 234, 122);}
 
@@ -81,5 +86,41 @@ main{
 
 
 .card-body > a{
-    font-size: 15px;
+    font-size: 16px;
+}
+
+.cb-lower{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+}
+
+.cb-bottom-left{
+    flex: 2;
+
+}
+
+.cb-bottom-right{
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+
+}
+
+.cb-lower >a {
+    margin: 10px;
+}
+
+.day-count{
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+    color: crimson;
+    font-family: 'Poppins', sans-serif;
+}
+
+.priority-section{
+    margin-top: 30px;
 }
