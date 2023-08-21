@@ -9,7 +9,7 @@ class Note(models.Model):
     title = models.CharField(max_length=200)
     content = RichTextField()
     created_at = models.DateField(default=timezone.now)
-    noteowner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='allNote')
+    noteowner = models.ForeignKey(User, on_delete=models.SET_NULL,null=True,default=None, editable=False, related_name='allNote')
     is_shared = models.BooleanField(default=False)
 
     def __str__(self):

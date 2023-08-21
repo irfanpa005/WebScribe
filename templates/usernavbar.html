@@ -4,20 +4,20 @@
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
         <i class="fa-solid fa-bars"></i>
     </button>
-    <a href="{% url 'notes:notes' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo-600"></li></a>
+    <a href="{% url 'notes:notes' 'request.user.username' %}"><li class="nav-item"><img src="{% static 'images/logo3.png' %}" id="logo-600"></li></a>
 </div>
 
 <nav class="tm-nav">
     <ul id="tm-main-nav" style="margin: 0;" class="navitemsicons">
-        {% url 'notes:notes' as notes %}
+        {% url 'notes:notes' userName=request.user.username as notes %}
         {% url 'toDo:allTasks' as toDo %}
         {% url 'notes:tutorials' as tutorials %}
         {% url 'userApp:userSharedNotes' as userSharedNotes %}
         {% url 'userApp:userSharedTutorials' as userSharedTutorials %}
 
-        <li class="nav-item"><a href="{% url 'notes:notes' %}"><img src="{% static 'images/logo3.png' %}" id="logo"></a></li>
+        <li class="nav-item"><a href="{% url 'notes:notes' request.user.username %}"><img src="{% static 'images/logo3.png' %}" id="logo"></a></li>
         <li class="nav-item">
-            <a href="{{notes}}" class="nav-link {% active_link 'notes:notes' 'active-nav' strict=True%}">
+            <a href="{{notes}}" class="nav-link {% active_link 'notes:notes' 'active-nav' %}">
                 Notes
             </a>
         </li>

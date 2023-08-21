@@ -42,7 +42,7 @@ def registration(request):
         messages.error(request, "! username or email exists")
         return redirect("userApp:index")
     login(request, user)
-    return redirect('notes:notes')
+    return redirect('notes:notes', userName = username)
        
 
 def index_login(request):
@@ -53,11 +53,11 @@ def index_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('notes:notes')
+                return redirect('notes:notes', userName = username)
             else:
                 messages.error(request, "Invalid credentials")
 
-        except AuthenticationFailed as e:
+        except Exception as e:
             messages.error(request, f"Authentication failed: {e}")
             return redirect('userApp:indexLogin')
 
@@ -77,26 +77,9 @@ def index_login(request):
     return render(request, 'index_login.html',{'notes':single_page_notes, 'tutorials' :single_page_tutorials})
 
 
-def login_user(request):
-    pass
-        
-
 def logout_user(requset):
     logout(requset)
     return redirect('userApp:index')
-
-# def register(request):
-#     if request.method == 'POST':
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             # Log the user in after registration
-#             login(request, user)
-#             return redirect('notes:notes')  # Redirect to the user's profile page or any other page
-#     else:
-#         form = RegistrationForm()
-#     return render(request, 'index', {'form': form})
-
 
 def view_note(request,note_id):
     note = Note.objects.get(pk=note_id)

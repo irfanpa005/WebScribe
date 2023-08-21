@@ -1,15 +1,18 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Note, Tutorial
+from userApp.models import User
 from .forms import NoteForm
 import json
 from django.http import JsonResponse
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-def notes(request):
-    notes = Note.objects.all()
+def notes(request, userName):
+    current_user = request.user
+    notes = Note.objects.filter(noteowner = current_user)
     return render(request, 'notes.html',{'notes': notes})
 
 
@@ -31,8 +34,9 @@ def create_note(request):
     if request.method == 'POST':
         form = NoteForm(request.POST)
         if form.is_valid():
+            form.instance.noteowner = request.user
             form.save()
-            return redirect('notes:notes')
+            return redirect('notes:notes', userName=request.user.username)
     else:
         form = NoteForm()
     return render(request, 'createnote.html', {'form': form})
