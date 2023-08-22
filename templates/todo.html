@@ -11,10 +11,10 @@
     <main class="container">
         <div class="pri-Row">
             <ul>
-                <li><a href="{% url 'toDo:allTasks' %}">All Tasks</a></li>
-                <li><a href="{% url 'toDo:groupedTasks' %}">Group By Priority</a></li>
-                <li><a href="{% url 'toDo:sortTaskAsc' %}">Sort By Date ↑</a></li>
-                <li><a href="{% url 'toDo:sortTaskDesc' %}">Sort By Date ↓</a></li>
+                <li><a href="{% url 'toDo:allTasks' request.user.username %}">All Tasks</a></li>
+                <li><a href="{% url 'toDo:groupedTasks' request.user.username %}">Group By Priority</a></li>
+                <li><a href="{% url 'toDo:sortTaskAsc' request.user.username %}">Sort By Date ↑</a></li>
+                <li><a href="{% url 'toDo:sortTaskDesc' request.user.username %}">Sort By Date ↓</a></li>
             </ul>
         </div>
 

@@ -4,12 +4,14 @@ from . models import Task
 # Create your views here.
 
 
-def all_tasks(request):
-    tasks = Task.objects.all()
+def all_tasks(request,userName):
+    current_user = request.user
+    tasks = Task.objects.filter(owner=current_user)
     return render (request, 'todo.html', {'alltasks' : tasks})
 
-def prioritized_tasks(request):
-    tasks = Task.objects.all().order_by('priority')
+def prioritized_tasks(request,userName):
+    current_user = request.user
+    tasks = Task.objects.filter(owner=current_user).order_by('priority')
     grouped_tasks = {
         'high_priority' : [],
         'medium_priority' :[],
@@ -27,10 +29,12 @@ def prioritized_tasks(request):
     return render(request, 'todo.html', {'grouped_tasks': grouped_tasks})
 
 
-def sort_tasks_asc(request):
-    tasks_ascending = Task.objects.all().order_by('due_date')
+def sort_tasks_asc(request,userName):
+    current_user = request.user
+    tasks_ascending = Task.objects.filter(owner=current_user).order_by('due_date')
     return render (request, 'todo.html', {'alltasks' : tasks_ascending})
 
-def sort_tasks_desc(request):
-    tasks_descending = Task.objects.all().order_by('-due_date')
+def sort_tasks_desc(request,userName):
+    current_user = request.user
+    tasks_descending = Task.objects.filter(owner=current_user).order_by('-due_date')
     return render (request, 'todo.html', {'alltasks' : tasks_descending})

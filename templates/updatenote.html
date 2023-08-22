@@ -12,7 +12,7 @@
 
 {% block body %}
     <div class="container m1">
-        <form action="{% url 'notes:create_note' %}" method="POST">
+        <form action="" method="POST">
             {% csrf_token %}
                 {% for field in form %}
                     <div class="form-group">

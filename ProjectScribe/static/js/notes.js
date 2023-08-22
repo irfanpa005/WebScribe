@@ -48,9 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
 // << --- First note selected or active--->>
 
 const firstNote = document.querySelector('.snote');
+
+   if (firstNote === null){
+      const btnContainer = document.querySelector('.button-container');
+      btnContainer.style.display = "none";
+   }
 
    if (firstNote){
       viewNote({target: firstNote});
@@ -60,11 +66,26 @@ const firstNote = document.querySelector('.snote');
 // << --- First note selected or active end--->>
 
 
+
+
 // << --- Single Note Display --->>
+
+var shareToggle = document.getElementById('shareBtn')
+var shareBtnLabel = document.getElementById('sharelabel')
+var noteID = ""
+
 
 function viewNote (event){
    const objectId = event.target.dataset.objectId;
-   const noteDisplayDIv = document.getElementById('dispEl');
+   const noteDisplayDIv = document.getElementById('dispEl')
+   const editLink = document.getElementById('editBtn')
+   const confirmDelete = document.getElementById('confirmDelete');
+   noteID =objectId;
+
+   editLink.href = `/notes/edit_note/${objectId}/`;
+   shareBtn.setAttribute('data-object-id', objectId);
+   confirmDelete.setAttribute('data-object-id', objectId);
+
 
    const allNoteElements = document.querySelectorAll('.snote');
    allNoteElements.forEach(element => {
@@ -78,10 +99,18 @@ function viewNote (event){
    .then(data => {
        // Update the noteDisplayDIv with the fetched data
          noteDisplayDIv.innerHTML = `
-         <h3><strong>Title: ${data.title}</strong></h3>
-         <p> ${data.content}</p>
+         <h4><strong>Title: ${data.title}</strong></h4>
+         <p> ${data.content}</p><br><br>
          <p>created at: ${data.created_at}</p>
      `;
+     if(data.is_shared === true){
+         shareToggle.checked = true
+         shareBtnLabel.innerHTML = "note shared"
+     } else    {
+         shareToggle.checked = false
+         shareBtnLabel.textContent = "share note with others"
+     }
+
  });
 
 }
@@ -91,6 +120,62 @@ notes.forEach(note => {
    note.addEventListener('click' , viewNote);
 });
 // << --- Single Note Display End--->>
+
+
+
+
+// << --- Shared Toggle change--->>
+
+shareToggle.addEventListener("change", function () {
+   const noteID = this.dataset.objectId;
+   console.log(noteID)
+   if (shareToggle.checked) {
+      shareBtnLabel.textContent = "note shared"
+      share_status_update(true)
+   } else {
+      shareBtnLabel.textContent = "share note with others"
+      share_status_update(false)
+   }
+
+   function share_status_update(status){
+
+   fetch(`notesharestatus/${noteID}`, {
+      method: "POST",
+      headers: {
+          "Content-type": "application/json",
+          "X-CSRFToken": getcookie("csrftoken")
+      },
+      body: JSON.stringify({
+          isShared: status,
+      })
+   })
+   .then(function (response) {
+      if (response.status === 200) {
+            console.log("Note updated successfully");
+      } else {
+            console.error("Error updating note");
+      }
+   })
+   .catch(function(error){
+   console.error("Fetch error:", error);
+   });
+
+
+
+   function getcookie(name){
+      const value =`; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length == 2) return parts.pop().split(';').shift();
+      }   
+
+   }
+
+});
+
+// << --- Shared Toggle Change end--->>
+
+
+
 
 
 // << --- Side Toggle bar icon--->>
@@ -130,11 +215,13 @@ window.addEventListener("click", function (event) {
 
 // << --- Side Toggle bar icon end--->>
 
+
+
+
 // << --- note search function--->>
 
 const searcBtn = document.getElementById('search-btn')
 const noteDisplayUl = document.getElementById('noteDisplUl')
-
 
 document.getElementById('searchform').addEventListener('submit',function(event){
    event.preventDefault();
@@ -178,11 +265,45 @@ document.getElementById('searchform').addEventListener('submit',function(event){
       const value =`; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
       if (parts.length == 2) return parts.pop().split(';').shift();
-      }
-
-   
-   
+      }   
    });
+
+// << --- note search end -->>
+
+
+
+
+// << --- delete modal popup -->>
+
+const deleteButton = document.getElementById('delBtn');
+const confirmationPopup = document.getElementById('confirmationPopup');
+const confirmDelete = document.getElementById('confirmDelete');
+const cancelDelete = document.getElementById('cancelDelete');
+
+deleteButton.addEventListener('click', function (event) {
+   event.preventDefault();
+   confirmationPopup.style.display = 'block';
+});
+
+cancelDelete.addEventListener('click', function () {
+   confirmationPopup.style.display = 'none';
+});
+
+confirmDelete.addEventListener('click', function(){
+   const noteID = this.dataset.objectId;
+   console.log(noteID)
+   var delUrl = `/notes/delete_note/${noteID}/`;
+   window.location.href = delUrl;
+
+});
+
+
+
+
+
+
+
+
 
 
 

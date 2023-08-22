@@ -128,11 +128,14 @@ ul > li.active-li {
 .dispEl-div{
    overflow: auto;
    flex: 1;
+   padding: 20px;
+   padding-bottom: 15vh;
 }  
 
 #dispEl{
-   padding: 20px;
+
    overflow: auto;
+   
 }
 
 .snote{
@@ -152,6 +155,46 @@ ul > li.active-li {
    display: none;
 }
 
+.button-container{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   background-color: #ffeeee;
+}
+
+.button-container>a{
+   padding: 5px 30px;
+   font-size: 0.9em;
+   color: #ffffff;
+   margin-left: 20px;
+   font-weight: bold;
+
+}
+.button-container>span{
+   padding: 5px 30px;
+   font-size: 1.2em;
+   color: #8f0f0f;
+   margin-left: 5vw;
+
+}
+
+.button-container>span>label{
+   font-size: 18px;
+}
+
+.modal{
+   display: none;
+}
+
+*.modal-header{
+   background-color: #444;
+   color: rgb(255, 255, 255);
+}
+
+*.modal-header > span{
+   background-color: #ffffff;
+   color: rgb(255, 255, 255);
+}
 
 @media all and (max-width: 600px) {
    #sbToggle{

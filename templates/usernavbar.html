@@ -10,7 +10,7 @@
 <nav class="tm-nav">
     <ul id="tm-main-nav" style="margin: 0;" class="navitemsicons">
         {% url 'notes:notes' userName=request.user.username as notes %}
-        {% url 'toDo:allTasks' as toDo %}
+        {% url 'toDo:allTasks' userName=request.user.username as toDo %}
         {% url 'notes:tutorials' as tutorials %}
         {% url 'userApp:userSharedNotes' as userSharedNotes %}
         {% url 'userApp:userSharedTutorials' as userSharedTutorials %}
