@@ -124,3 +124,7 @@ main{
 .priority-section{
     margin-top: 30px;
 }
+
+#addTaskWindow{
+    display: none;
+}

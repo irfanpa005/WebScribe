@@ -128,7 +128,6 @@ notes.forEach(note => {
 
 shareToggle.addEventListener("change", function () {
    const noteID = this.dataset.objectId;
-   console.log(noteID)
    if (shareToggle.checked) {
       shareBtnLabel.textContent = "note shared"
       share_status_update(true)
@@ -296,19 +295,6 @@ confirmDelete.addEventListener('click', function(){
    window.location.href = delUrl;
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 })
 

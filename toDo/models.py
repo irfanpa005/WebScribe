@@ -7,9 +7,9 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     details = models.CharField(max_length=255,null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='allTasks')
-    is_Active = models.BooleanField()
+    is_Active = models.BooleanField(default=True)
     created_at = models.DateField(default=timezone.now)
-    due_date = models.DateField(null=True)
+    due_date = models.DateField(null=False, default=None)
     priority = models.CharField(
         max_length=32,
         choices=[

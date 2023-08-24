@@ -1,5 +1,6 @@
 {% extends 'userbase.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 
 {% block extra_styles %}
@@ -11,10 +12,11 @@
     <main class="container">
         <div class="pri-Row">
             <ul>
-                <li><a href="{% url 'toDo:allTasks' request.user.username %}">All Tasks</a></li>
-                <li><a href="{% url 'toDo:groupedTasks' request.user.username %}">Group By Priority</a></li>
-                <li><a href="{% url 'toDo:sortTaskAsc' request.user.username %}">Sort By Date ↑</a></li>
-                <li><a href="{% url 'toDo:sortTaskDesc' request.user.username %}">Sort By Date ↓</a></li>
+              <li><a href="{% url 'toDo:allTasks' request.user.username %}" id="addBtn">Add Task</a></li>
+              <li><a href="{% url 'toDo:allTasks' request.user.username %}">All Tasks</a></li>
+              <li><a href="{% url 'toDo:groupedTasks' request.user.username %}">Group By Priority</a></li>
+              <li><a href="{% url 'toDo:sortTaskAsc' request.user.username %}">Sort By Date ↑</a></li>
+              <li><a href="{% url 'toDo:sortTaskDesc' request.user.username %}">Sort By Date ↓</a></li>
             </ul>
         </div>
 
@@ -40,9 +42,9 @@
                                   <p class="card-text-due">Due date: {{task.due_date}}</p>
                                 </div>
                                 <div>
-                                  <a href="#" class="btn btn-info">Edit</a>
-                                  <a href="#" class="btn btn-danger">Delete</a>
-                                  <a href="#" class="btn btn-success">Done</a>
+                                  <a href="#" class="btn btn-info editBtn" data-task-id="{{ task.id }}">Edit</a>
+                                  <a href="#" class="btn btn-danger" data-task-id="{{ task.id }}">Delete</a>
+                                  <a href="#" class="btn btn-success" data-task-id="{{ task.id }}">Done</a>
                                 </div>
                             </div>
                             <div class="cb-bottom-right">
@@ -78,9 +80,9 @@
                                             <p class="card-text-due">Due date: {{task.due_date}}</p>
                                           </div>
                                           <div>
-                                            <a href="#" class="btn btn-info">Edit</a>
-                                            <a href="#" class="btn btn-danger">Delete</a>
-                                            <a href="#" class="btn btn-success">Done</a>
+                                            <a href="#" class="btn btn-info editBtn" data-task-id="{{ task.id }}">Edit</a>
+                                            <a href="#" class="btn btn-danger" data-task-id="{{ task.id }}">Delete</a>
+                                            <a href="#" class="btn btn-success" data-task-id="{{ task.id }}">Done</a>
                                           </div>
                                       </div>
                                       <div class="cb-bottom-right">
@@ -116,9 +118,9 @@
                                             <p class="card-text-due">Due date: {{task.due_date}}</p>
                                           </div>
                                           <div>
-                                            <a href="#" class="btn btn-info">Edit</a>
-                                            <a href="#" class="btn btn-danger">Delete</a>
-                                            <a href="#" class="btn btn-success">Done</a>
+                                            <a href="#" class="btn btn-info editBtn" data-task-id="{{ task.id }}">Edit</a>
+                                            <a href="#" class="btn btn-danger" data-task-id="{{ task.id }}">Delete</a>
+                                            <a href="#" class="btn btn-success" data-task-id="{{ task.id }}">Done</a>
                                           </div>
                                       </div>
                                       <div class="cb-bottom-right">
@@ -154,9 +156,9 @@
                                               <p class="card-text-due">Due date: {{task.due_date}}</p>
                                             </div>
                                             <div>
-                                              <a href="#" class="btn btn-info">Edit</a>
-                                              <a href="#" class="btn btn-danger">Delete</a>
-                                              <a href="#" class="btn btn-success">Done</a>
+                                              <a href="#" class="btn btn-info" id="editBtn" data-task-id="{{ task.id }}">Edit</a>
+                                              <a href="#" class="btn btn-danger" id="delBtn" data-task-id="{{ task.id }}">Delete</a>
+                                              <a href="#" class="btn btn-success" id="doneBtn" data-task-id="{{ task.id }}">Done</a>
                                             </div>
                                         </div>
                                         <div class="cb-bottom-right">
@@ -170,25 +172,19 @@
                       </div>
                   </div>
               {% endif %}
-        {% endif %}
-
-        
+        {% endif %}     
 
 
+        <div class="modal" tabindex="-1" role="dialog" id="addTaskWindow">
+          {% include 'add_edit_task.html' %}
+        </div>
+  
+  
+      </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </main>
+      <footer>
+        {% block page_scripts %}
+            <script src="{% static 'js/todo.js' %}"></script>
+        {% endblock %}
+    </footer>
 {% endblock  %}
