@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %}
+    
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Add new Task</h5>
+        </div>
+        <form method="POST" id="tutorialform" action="{% url 'notes:addTutorial' request.user %}">
+            {% csrf_token %}
+            <div class="modal-body">
+            {% crispy form %}
+            </div>
+        </form>
+        <div class="modal-footer">
+            <!--  button type="button" class="btn btn-primary" id="confirmDelete" data-object-id="popaddtaskbtn">Add</button>  -->
+            <button type="button" class="btn btn-danger" data-dismiss="modal" id="popcanceltuto">Close</button>
+        </div>
+        </div>
+    </div>

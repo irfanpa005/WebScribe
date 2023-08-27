@@ -14,7 +14,7 @@ a:hover {  color: #9C9; }
 .tm-text-title { color: #eae180; text-decoration: none;white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 200px;}
 .tm-text-title:hover {  color: #9C9; text-decoration: none; }
 
-main{margin-top: 50px;}
+main{margin-top: 25px;}
 
 
 /* Section*/
@@ -44,7 +44,7 @@ main{margin-top: 50px;}
     height: 200px;
 }
 
-.tm-media-body {  padding-left: 30px; 
+.tm-media-body {  padding-left: 20px; 
     width: 100%;    
     text-overflow: ellipsis;
     overflow: hidden;
@@ -138,6 +138,75 @@ p.tut-descr{
 .tm-text-link { color: #999; }
 .tm-text-link:hover { color: #99CC99; }
 .tm-relative { position: relative; }
+
+
+/* Tutorials */
+.top-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-add {
+    margin: 5px 5px;
+    width: fit-content;
+}
+
+.top-add > button {
+    padding: 5px 20px;
+    font-size: 15px;
+    background-color: rgb(128, 8, 32);
+    border-radius: 10px;
+    cursor: pointer;
+    border: 0px solid rgb(128, 8, 32) ;
+    color: #fff;
+}
+
+
+.form-section {
+    margin: 5px 5px;
+
+}
+form > input{
+    margin: 5px 0;
+     
+}
+
+#addTutorialWindow {
+    display: none;
+}
+
+#confirmationPopup{
+    display: none;
+}
+
+
+.button-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+ }
+ 
+ .button-container>a{
+    padding: 3px 30px;
+    font-size: 0.9em;
+    color: #ffffff;
+    margin-right: 20px;
+    font-weight: bold;
+ 
+ }
+ .button-container>span{
+    padding: 5px 30px;
+    font-size: 1.2em;
+    color: #f7e4e4;
+    margin-left: 2vw;
+ 
+ }
+ 
+ .button-container>span>label{
+    font-size: 18px;
+ }
+
 
 
 @media (max-width:600px){

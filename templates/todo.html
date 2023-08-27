@@ -12,7 +12,7 @@
     <main class="container">
         <div class="pri-Row">
             <ul>
-              <li><a href="{% url 'toDo:allTasks' request.user.username %}" id="addBtn">Add Task</a></li>
+              <li><a href="" id="addBtn">Add Task</a></li>
               <li><a href="{% url 'toDo:allTasks' request.user.username %}">All Tasks</a></li>
               <li><a href="{% url 'toDo:groupedTasks' request.user.username %}">Group By Priority</a></li>
               <li><a href="{% url 'toDo:sortTaskAsc' request.user.username %}">Sort By Date ↑</a></li>
@@ -42,9 +42,8 @@
                                   <p class="card-text-due">Due date: {{task.due_date}}</p>
                                 </div>
                                 <div>
-                                  <a href="#" class="btn btn-info editBtn" data-task-id="{{ task.id }}">Edit</a>
-                                  <a href="#" class="btn btn-danger" data-task-id="{{ task.id }}">Delete</a>
-                                  <a href="#" class="btn btn-success" data-task-id="{{ task.id }}">Done</a>
+                                  <a href="#" class="btn btn-info editBtn" data-object-id="{{ task.id }}">Edit</a>
+                                  <a href="#" class="btn btn-danger delBtn" data-object-id="{{ task.id }}">Delete</a>
                                 </div>
                             </div>
                             <div class="cb-bottom-right">
@@ -80,9 +79,8 @@
                                             <p class="card-text-due">Due date: {{task.due_date}}</p>
                                           </div>
                                           <div>
-                                            <a href="#" class="btn btn-info editBtn" data-task-id="{{ task.id }}">Edit</a>
-                                            <a href="#" class="btn btn-danger" data-task-id="{{ task.id }}">Delete</a>
-                                            <a href="#" class="btn btn-success" data-task-id="{{ task.id }}">Done</a>
+                                            <a href="#" class="btn btn-info editBtn" data-object-id="{{ task.id }}">Edit</a>
+                                            <a href="#" class="btn btn-danger delBtn" data-object-id="{{ task.id }}">Delete</a>
                                           </div>
                                       </div>
                                       <div class="cb-bottom-right">
@@ -118,9 +116,8 @@
                                             <p class="card-text-due">Due date: {{task.due_date}}</p>
                                           </div>
                                           <div>
-                                            <a href="#" class="btn btn-info editBtn" data-task-id="{{ task.id }}">Edit</a>
-                                            <a href="#" class="btn btn-danger" data-task-id="{{ task.id }}">Delete</a>
-                                            <a href="#" class="btn btn-success" data-task-id="{{ task.id }}">Done</a>
+                                            <a href="#" class="btn btn-info editBtn" data-object-id="{{ task.id }}">Edit</a>
+                                            <a href="#" class="btn btn-danger delBtn" data-object-id="{{ task.id }}">Delete</a>
                                           </div>
                                       </div>
                                       <div class="cb-bottom-right">
@@ -156,9 +153,8 @@
                                               <p class="card-text-due">Due date: {{task.due_date}}</p>
                                             </div>
                                             <div>
-                                              <a href="#" class="btn btn-info" id="editBtn" data-task-id="{{ task.id }}">Edit</a>
-                                              <a href="#" class="btn btn-danger" id="delBtn" data-task-id="{{ task.id }}">Delete</a>
-                                              <a href="#" class="btn btn-success" id="doneBtn" data-task-id="{{ task.id }}">Done</a>
+                                              <a href="#" class="btn btn-info"  data-object-id="{{ task.id }}">Edit</a>
+                                              <a href="#" class="btn btn-danger delBtn" data-object-id="{{ task.id }}">Delete</a>
                                             </div>
                                         </div>
                                         <div class="cb-bottom-right">
@@ -179,7 +175,28 @@
           {% include 'add_edit_task.html' %}
         </div>
   
+
+        <div class="modal" tabindex="-1" role="dialog" id="confirmationPopup">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>please confirm to delete task.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmDelete" data-object-id="">Confirm</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelDelete">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
   
+
       </main>
 
       <footer>

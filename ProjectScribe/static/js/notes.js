@@ -226,8 +226,15 @@ document.getElementById('searchform').addEventListener('submit',function(event){
    event.preventDefault();
    noteDisplayUl.innerHTML = " "
    var searchWord = document.getElementById('search-word').value
+
+   if (searchWord){
+      const serchNotif = document.getElementById('search-result-notf')
+      serchNotif.style.display = 'block';
+      serchNotif.textContent = `showing results for '${searchWord}'`;
+   }
+
  
-   fetch(`user/search/`, {
+   fetch(`/notes/user/search/`, {
       method: "POST",
       headers: {
           "Content-type": "application/json",
@@ -239,6 +246,15 @@ document.getElementById('searchform').addEventListener('submit',function(event){
   })
    .then(response => response.json())
    .then(data => {
+
+      if (data.length === 0){
+         const noResult = document.getElementById('no-result-found')
+         noResult.style.display = 'block';
+         noResult.textContent = `0 results found for '${searchWord}'`;
+      }
+
+
+
       data.forEach(note => {
          const li = document.createElement('li');
          li.textContent = note.title;
@@ -254,6 +270,7 @@ document.getElementById('searchform').addEventListener('submit',function(event){
             firstNote.classList.add('active-li');
          }
 
+         
          
      });
    })
@@ -290,7 +307,6 @@ cancelDelete.addEventListener('click', function () {
 
 confirmDelete.addEventListener('click', function(){
    const noteID = this.dataset.objectId;
-   console.log(noteID)
    var delUrl = `/notes/delete_note/${noteID}/`;
    window.location.href = delUrl;
 

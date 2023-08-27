@@ -10,7 +10,19 @@
 <main>
     <div class="container";>
         <h3 class="tm-media-body">Shared Notes</h3>
+        <div class="form-section">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="enter topic" class="form-control" name="searchnote" required>
+                <input type="submit" value="Search" class="btn btn-primary">
+                <a href="{% url 'userApp:userSharedNotes' request.user %}">View All</a>
+                {% if search_keyword %}
+                    <p>Showing results for '{{search_keyword}}'</p>
+                {% endif %}
+            </form>
+        </div>
         <div class="row">
+            {% if notes %}
             {% for note in notes %}
             <div class="col-lg-6">
                 <div class="tm-media">
@@ -29,6 +41,9 @@
                 </div>
             </div>
             {% endfor %}
+            {% else %}
+            <p>0 results found for '{{search_keyword}}'</p>
+            {% endif %}
         </div>
     </div>
 

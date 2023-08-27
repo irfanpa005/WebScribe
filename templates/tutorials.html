@@ -9,14 +9,31 @@
 {% block body %}
 <main>
     <div class="container">
-        <h3 class="tm-media-body sh-tutorials">Shared Tutorials</h3>
+        <div class="top-section">
+            <div class="top-add">
+                <button id="addBtn">Add Tutorial</button>
+            </div>
+            <div class="form-section">
+                <form action="{% url 'notes:searchTutorial'%}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="enter topic" class="form-control" name="searchtuto" required>
+                    <input type="submit" value="Search" class="btn btn-primary">
+                    <a href="{% url 'notes:tutorials' request.user %}">View All</a>
+                    {% if search_keyword %}
+                        <p>Showing results for '{{search_keyword}}'</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        <h3 class="tm-media-body sh-tutorials">Tutorials</h3>
         <div class="row">
+            {% if tutorials %}
             {% for tutorial in tutorials %}
-            <div class="col-lg-6 tut-contents">
+            <div class="col-lg-6 ">
                 <div class="tm-media-body-tut">
-                    <h5><a href="#" class="tm-text-title">{{tutorial.title}}</a></h5>
+                    <h5><a href="" class="tm-text-title">{{tutorial.title}}</a></h5>
                     <p class="tm-text-small">{{tutorial.short_descr}}</p>
-                    
             
                     {% comment %} <div id="iframe-container">
                         <iframe id="content-iframe" src="{{tutorial.link}}" frameborder="0"  style="padding: 0;"></iframe>
@@ -25,30 +42,82 @@
                     <div class="content-iframe">
                         <a href="{{tutorial.link}}" target="_blank">{{tutorial.link}}</a>
                     </div>
-            
                     <div class="tm-text-secondary tm-media-span tm-text-small">
-                        <span class="tm-text-left">Created By: {{ tutorial.owner }}</span>
+                        <span class="tm-text-left">Created By: {{ tutorial.tutorial_owner }}</span>
                         <span class="tm-text-right">{{ tutorial.created_at }}</span>
                     </div>
-                    
+                    <div class="button-container">
+                        <a href="" class="btn btn-info editBtn"  data-object-id="{{ tutorial.id }}">Edit</a>
+                        <a href="" class="btn btn-danger delBtn" data-object-id="{{ tutorial.id  }}">Delete</a>
+                        <span class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="shareBtn{{ tutorial.id }}" 
+                            data-object-id="{{ tutorial.id }}" {% if tutorial.is_shared %}checked{% endif %}>
+                            <label class="form-check-label" for="shareBtn{{ tutorial.id }}" id="sharelabel{{ tutorial.id }}">
+                                {% if tutorial.is_shared %}
+                                    Tutorial shared
+                                {% else %}
+                                    Share tutorial with others
+                                {% endif %}
+                            </label>
+                        </span>
+                    </div>
                     <hr class="tm-hr tm-mr">
                 </div>
             </div>
             {% endfor %}
+            {% elif search_keyword %}
+            <p>0 results found for '{{search_keyword}}'</p>
+            {% endif %}
         </div>
+        
     </div>
+
+
+    <div class="container">
+        {% if tutorials.has_next %}
+        <div class="tm-text-right">
+            <a href="?page={{ tutorials.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+        </div>
+        {% endif %}
+        {% if tutorials.has_previous %}
+        <div class="tm-text-right">
+            <a href="?page={{ tutorials.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+        </div>
+        {% endif %}
+    </div>
+
+
+
 </main>
 
-<div class="container">
-    {% if tutorials.has_next %}
-    <div class="tm-text-right">
-        <a href="?page={{ tutorials.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
-    </div>
-    {% endif %}
-    {% if tutorials.has_previous %}
-    <div class="tm-text-right">
-    <a href="?page={{ tutorials.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
-    </div>
-    {% endif %}
+<div class="modal" tabindex="-1" role="dialog" id="addTutorialWindow">
+    {% include 'add_edit_tutorial.html' %}
 </div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="confirmationPopup">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Delete?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>please confirm to delete task.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="confirmDelete" data-object-id="">Confirm</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelDelete">Cancel</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<footer>
+    {% block page_scripts %}
+        <script src="{% static 'js/tutorial.js' %}"></script>
+    {% endblock %}
+</footer>
 {% endblock %}

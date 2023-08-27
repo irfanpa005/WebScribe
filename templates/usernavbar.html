@@ -11,9 +11,9 @@
     <ul id="tm-main-nav" style="margin: 0;" class="navitemsicons">
         {% url 'notes:notes' userName=request.user.username as notes %}
         {% url 'toDo:allTasks' userName=request.user.username as toDo %}
-        {% url 'notes:tutorials' as tutorials %}
-        {% url 'userApp:userSharedNotes' as userSharedNotes %}
-        {% url 'userApp:userSharedTutorials' as userSharedTutorials %}
+        {% url 'notes:tutorials' userName=request.user.username as tutorials %}
+        {% url 'userApp:userSharedNotes' userName=request.user.username as userSharedNotes %}
+        {% url 'userApp:userSharedTutorials' userName=request.user.username as userSharedTutorials %}
 
         <li class="nav-item"><a href="{% url 'notes:notes' request.user.username %}"><img src="{% static 'images/logo3.png' %}" id="logo"></a></li>
         <li class="nav-item">

@@ -128,3 +128,7 @@ main{
 #addTaskWindow{
     display: none;
 }
+
+#confirmationPopup{
+    display: none;
+}

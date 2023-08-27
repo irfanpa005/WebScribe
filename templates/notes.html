@@ -21,7 +21,9 @@
                     <input type="submit" class="btn btn-primary" id="search-btn" value="Search">
                 </form>
             </div>
-            <a href="{% url 'notes:create_note' %}" class="cr-note badge" id="createNote">Create a new note</a> 
+            <a href="{% url 'notes:create_note' %}" class="cr-note badge" id="createNote">Create a new note</a>
+            <p id="search-result-notf" class="small"></p>
+            <p id="no-result-found" class="small"></p>
             <ul id="noteDisplUl">
                 {% for note in notes %}
                     <li data-object-id="{{note.pk}}" class="snote badge">{{ note.title }}</li>

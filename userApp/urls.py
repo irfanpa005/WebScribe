@@ -11,6 +11,6 @@ urlpatterns=[
     path('shared_notes/',views.shared_notes, name="sharedNotes"),
     path('shared_tutorials/',views.shared_tutorials, name="sharedTutorials"),
     path('view_note/<int:note_id>/',views.view_note, name="viewNote"),
-    path('user_shared_notes/',views.user_shared_notes, name="userSharedNotes"),
-    path('user_shared_tutorials/',views.user_shared_tutorials, name="userSharedTutorials"),
+    path('shared_notes/<str:userName>/',views.user_shared_notes, name="userSharedNotes"),
+    path('shared_tutorials/<str:userName>/',views.user_shared_tutorials, name="userSharedTutorials"),
 ]

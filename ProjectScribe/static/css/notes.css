@@ -125,6 +125,20 @@ ul > li.active-li {
    
 }
 
+#search-result-notf{
+   margin: 0;
+   padding: 0;
+   margin-left: 20px;
+   display: none;
+}
+
+#no-result-found{
+   margin: 0;
+   padding: 0;
+   margin-left: 20px;
+   display: none;
+}
+
 .dispEl-div{
    overflow: auto;
    flex: 1;

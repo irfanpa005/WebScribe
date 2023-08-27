@@ -20,7 +20,7 @@ class Tutorial(models.Model):
     title = models.CharField(max_length=200)
     short_descr = models.CharField(max_length=200,blank=True)
     link = models.URLField()
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='allTutorials')
+    tutorial_owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='allTutorials')
     is_shared = models.BooleanField(default=False)
     created_at = models.DateField(default=timezone.now)
 

@@ -1,5 +1,6 @@
-from django.http import JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from . models import Task
 from .forms import TaskForm
 
@@ -13,24 +14,34 @@ def add_task(request,userName):
     return redirect('toDo:allTasks', userName=request.user.username)
 
 
-
-
 def edit_task(request,task_id):
+    if request.method == 'GET':
+        task = get_object_or_404(Task, pk=task_id)
+        form = TaskForm(instance=task)
+        form_data = {
+                'title': form['title'].value(),
+                'details': form['details'].value(),
+                'is_active': form['is_Active'].value(),
+                'priority': form['priority'].value(),
+                'due_date': form['due_date'].value(),
+            }
+        return JsonResponse (form_data, safe=False)
+    else:
+        task = get_object_or_404(Task, pk=task_id)
+        form = TaskForm(request.POST or None, instance = task)
+        if form.is_valid():
+            form.instance.owner = request.user
+            form.save()
+            return redirect('toDo:allTasks', userName=request.user.username)
+
+
+def delete_task(request,task_id):
+    print(task_id)
     task = get_object_or_404(Task, pk=task_id)
-    # form = TaskForm(request.POST or None, instance =task)
-    # if form.is_valid():
-    #     form.instance.owner = request.user
-    #     form.save()
-    #     return redirect('toDo:allTasks', userName=request.user.username)
-    # else:
-    form = TaskForm(instance=task)
-    passvalue = [1,2,3,4,5]
-    print(form)
-    return JsonResponse (passvalue, safe=False)
-    # return redirect('toDo:allTasks', userName=request.user.username, form=form)
-
-
-
+    task.delete()
+    return redirect('toDo:allTasks', userName=request.user.username)
+    
+    return HttpResponse('delete function')
 
 
 def all_tasks(request,userName):
@@ -71,3 +82,4 @@ def sort_tasks_desc(request,userName):
     tasks_descending = Task.objects.filter(owner=current_user).order_by('-due_date')
     form = TaskForm()
     return render (request, 'todo.html', {'alltasks' : tasks_descending, 'form':form})
+

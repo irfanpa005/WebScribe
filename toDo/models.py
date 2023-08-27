@@ -1,6 +1,8 @@
+import datetime
 from django.db import models
 from userApp.models import User
 from django.utils import timezone
+from django.core.validators import MinValueValidator
 # Create your models here.
 
 class Task(models.Model):
@@ -9,7 +11,7 @@ class Task(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='allTasks')
     is_Active = models.BooleanField(default=True)
     created_at = models.DateField(default=timezone.now)
-    due_date = models.DateField(null=False, default=None)
+    due_date = models.DateField(null=False, default=None,validators=[MinValueValidator(limit_value=timezone.now().date())])
     priority = models.CharField(
         max_length=32,
         choices=[
