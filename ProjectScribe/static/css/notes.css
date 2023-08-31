@@ -23,7 +23,7 @@ main {
 
 
  .sidebar {
-    width: 250px;
+    width: 300px;
     height: 100%;
     left: 0;
     display: flex;
@@ -92,7 +92,7 @@ ul > li.active-li {
    font-size: 0.8em;
    text-align: left;
    color: #f5f2f9;
-   background-color: rgb(155, 7, 71);
+   background-color:rgb(121, 67, 7);
    }
 
 .sidebar >a {
@@ -243,4 +243,28 @@ ul > li.active-li {
    .resizer{
       width: 3px;
    }
+
+   .button-container{
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+   }
+
+   .button-container>a{
+      padding: 5px 15px;
+      font-size: 0.9em;
+      margin-left: 5px;
+
+   
+   }
+
+   .button-container>span{
+      padding: 5px 30px;
+      font-size: 1.2em;
+      color: #8f0f0f;
+      margin-left: 10vw;
+   
+   }
+   
 }

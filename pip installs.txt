@@ -3,3 +3,6 @@ $ pip install django-active-link
 pip install django-crispy-forms
 
 pip install crispy-bootstrap5
+
+pip install django-allauth
+

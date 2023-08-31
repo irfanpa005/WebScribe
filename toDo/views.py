@@ -36,7 +36,6 @@ def edit_task(request,task_id):
 
 
 def delete_task(request,task_id):
-    print(task_id)
     task = get_object_or_404(Task, pk=task_id)
     task.delete()
     return redirect('toDo:allTasks', userName=request.user.username)

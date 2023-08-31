@@ -1,5 +1,5 @@
 * {  box-sizing: border-box; }
-html, body { overflow-x: hidden;  height: 100%;}
+html, body { overflow-x: hidden;}
 body { 
     font-family: 'Kumbh Sans', sans-serif;
     font-size: 18px;
@@ -8,9 +8,15 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-#main-body {margin-top: 60px; height: 100%;}
+#main-body {
+    margin-top: 60px; 
+    min-height: 100vh;
+}
+
+
 a { color: #fff7f7; text-decoration: none; }
 a:hover {  color: #9C9; text-decoration: none; }
 
@@ -67,7 +73,8 @@ a:hover {  color: #9C9; text-decoration: none; }
 }
 
 .nav-link:hover {
-    background-color: #f5f5f5; 
+    background-color: #f5f5f5;
+    color: #772006; 
 }
 
 li.nav-logout {
@@ -108,6 +115,17 @@ li.nav-logout:hover {
 }
 
 
+footer {
+    position: relative; /* Relative positioning */
+    bottom: 0; /* Place at the bottom of its containing element (body-content) */
+    width: 100%;
+    background-color: #444;
+    text-align: center;
+    color: white;
+    font-size: 2vh;
+}
+
+
 @media all and (max-width: 1020px) {
     #tm-main-nav{flex-wrap: wrap;}
     #tm-main-nav > li{
@@ -126,6 +144,7 @@ li.nav-logout:hover {
 @media all and (max-width: 600px) {
     #main-body {margin-top: 0.1vh;}
     div.container{padding: 0;}
+
     #logo-600{
         height: 60px;
         width: 100px;
@@ -140,6 +159,8 @@ li.nav-logout:hover {
         background-color: #444;
         z-index: 500;
         width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .tm-nav { width:0; }

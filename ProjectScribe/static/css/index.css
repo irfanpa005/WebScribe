@@ -6,10 +6,11 @@ body {
     background-color: #333;
     color: #999;
     margin: 0;
+    min-height: 100vh;
 }
 
 a { color: #fff7f7; text-decoration: none; }
-a:hover {  color: #9C9; }
+a:hover {  color: #9C9; text-decoration: none; }
 
 .tm-text-title { color: #eae180; text-decoration: none;white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 200px;}
 .tm-text-title:hover {  color: #9C9; text-decoration: none; }
@@ -118,7 +119,7 @@ nav-600{
     float: right;
 }
 
-.tm-parallax { min-height: 70px; }
+.tm-parallax { min-height: 100vh; }
 
 #contact .tm-parallax {
     margin-bottom: 300px;
@@ -128,8 +129,6 @@ nav-600{
 
 
 /* Shared Notes */
-
-
 #iframe-container {
     border: 1px solid #ccc;
     margin: 10px;
@@ -177,12 +176,10 @@ p.tut-descr{
 /* Registration form */
 .registration-form {
     position: fixed;
-    bottom: 200px;
+    top: 120px;
     right: 150px;
     width: 400px;
-    height: 400px;
-    margin-top: 0;
-    margin-bottom: 0;
+    height: 450px;
     background-color: #333;
     color: #999999;
     display: flex;
@@ -197,41 +194,53 @@ form{
     padding: 10px;
 }
 
+form>input.btn-primary{
+    border-color: rgb(194, 191, 191);
+}
 
 
+a.google-button-a{
+    text-decoration: none;
+    width: 95%;
+    cursor: pointer;  
+}
+
+.google-button{
+    display: block;
+    width: 100%;
+    background-color:#007bff;
+    color: white;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 2px 0 rgb(173, 147, 147); */
+    padding: 3px;
+    font-size: 15px;
+    border: 1px solid rgb(194, 191, 191);
+}
+
+.google-button:hover{
+    background-color: #2a67ca;
+    border: 1px solid #2a67ca;
+}
+
+
+
+.google-button > img{
+    background-color: white;
+    padding: 3px;
+}
+
+footer {
+    position: relative;
+    bottom: 0; 
+    width: 100%;
+    background-color: #444;
+    text-align: center;
+    color: white;
+    font-size: 2vh;
+}
 
 @media (max-width: 1200px) {
 
-    /* .tm-nav ul {
-        position: relative;
-        left: -280px;
-        flex-direction: column;
-        padding-top: 15px;
-        padding-bottom: 15px;        
-        width: 280px;
-        transition: all 0.5s ease;
-    }
-
-    .tm-nav ul.show { left: 0; }
-
-    .nav-link {
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .navbar-toggler {
-        display: block;
-        width: 50px;
-        height: 45px;
-        font-size: 1.2rem;
-        background-color: #444444;
-        border: none;
-        color: #999999;
-        outline: none;
-    }
-
-    .navbar-toggler:hover { color: #99CC99; } */ */
 
     .registration-form {
         position: fixed;
@@ -255,9 +264,6 @@ form{
         position: fixed;
         bottom: 200px;
         right: 80px;
-        width: 400px;
-        height: 400px;
-
     }
 
     .tm-content {
@@ -269,55 +275,14 @@ form{
 }
 
 
-
-
 @media (max-width: 1100px) {
     .tm-nav { width: 100%; }
-    /* .tm-nav ul {
-        position: relative;
-        left: -280px;
-        flex-direction: column;
-        padding-top: 15px;
-        padding-bottom: 15px;        
-        width: 280px;
-        transition: all 0.5s ease;
-    }
-
-    .tm-nav ul.show { left: 0; }
-
-    .nav-link {
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .navbar-toggler {
-        display: block;
-        width: 50px;
-        height: 45px;
-        font-size: 1.2rem;
-        background-color: #444444;
-        border: none;
-        color: #999999;
-        outline: none;
-    }
-
-    .navbar-toggler:hover { color: #99CC99; }
-
-    .tm-content {
-        padding-left: 20px;
-        padding-right: 20px;
-        padding: 50px 20px;
-    } */
 
     .tm-copyright { margin-left: 15px; }
 
     .registration-form {
         position: fixed;
         bottom: 200px;
-        right: 40px;
-        width: 400px;
-        height: 400px;
         margin-top: 0;
         margin-bottom: 0;
         background-color: #333;
@@ -395,11 +360,10 @@ form{
     .tm-nav { width: 0; }
     .tm-nav ul {
         position: relative;
-        left: -280px;
+        left: -240px;
         flex-direction: column;
-        padding-top: 15px;
-        padding-bottom: 15px;        
-        width: 280px;
+        padding: 10px 0px;
+        width: 240px;
         transition: all 0.5s ease;
     }
     

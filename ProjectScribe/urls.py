@@ -24,6 +24,7 @@ urlpatterns = [
     path('notes/',include('notes.urls')),
     path('todo/',include('toDo.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:

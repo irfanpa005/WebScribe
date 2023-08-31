@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
       var cw = w + dx; // complete width
 
-      if ( cw < 700 && cw > 250 ) {
+      if ( cw < 700 && cw > 300 ) { //min and max size of sidebar
          sidebar.style.width = `${ cw }px`;
       }
    }
@@ -221,14 +221,18 @@ window.addEventListener("click", function (event) {
 
 const searcBtn = document.getElementById('search-btn')
 const noteDisplayUl = document.getElementById('noteDisplUl')
+const noteDisplayDIv = document.getElementById('dispEl')
+const serchNotif = document.getElementById('search-result-notf')
+const btnContainer = document.querySelector('.button-container');
+const noResult = document.getElementById('no-result-found')
 
 document.getElementById('searchform').addEventListener('submit',function(event){
    event.preventDefault();
-   noteDisplayUl.innerHTML = " "
+   noteDisplayUl.innerHTML = " ";
+   noResult.textContent = ` `;
    var searchWord = document.getElementById('search-word').value
 
    if (searchWord){
-      const serchNotif = document.getElementById('search-result-notf')
       serchNotif.style.display = 'block';
       serchNotif.textContent = `showing results for '${searchWord}'`;
    }
@@ -248,12 +252,11 @@ document.getElementById('searchform').addEventListener('submit',function(event){
    .then(data => {
 
       if (data.length === 0){
-         const noResult = document.getElementById('no-result-found')
+         noteDisplayDIv.textContent=" ";
+         btnContainer.style.display = "none";
          noResult.style.display = 'block';
          noResult.textContent = `0 results found for '${searchWord}'`;
       }
-
-
 
       data.forEach(note => {
          const li = document.createElement('li');

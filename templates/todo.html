@@ -12,7 +12,7 @@
     <main class="container">
         <div class="pri-Row">
             <ul>
-              <li><a href="" id="addBtn">Add Task</a></li>
+              <li id="li-addtask"><a href="" id="addBtn">Add Task</a></li>
               <li><a href="{% url 'toDo:allTasks' request.user.username %}">All Tasks</a></li>
               <li><a href="{% url 'toDo:groupedTasks' request.user.username %}">Group By Priority</a></li>
               <li><a href="{% url 'toDo:sortTaskAsc' request.user.username %}">Sort By Date ↑</a></li>
@@ -22,12 +22,12 @@
 
         {% if alltasks %}
           <div>
-            <h2>All Tasks</h2>
+            <h3>All Tasks</h3>
           </div>
 
           <div class="row td-displEl">
             {% for task in alltasks %}
-              <div class="col-lg-4 task-card">
+              <div class="col-lg-4 col-md-6 col-sm-12 task-card">
                   <div class="card{% include 'card_color.html' %}">
                       <div class="card-header">
                         <span class="title-txt">{{task.title}}</span>
@@ -42,12 +42,16 @@
                                   <p class="card-text-due">Due date: {{task.due_date}}</p>
                                 </div>
                                 <div>
-                                  <a href="#" class="btn btn-info editBtn" data-object-id="{{ task.id }}">Edit</a>
+                                  <a href="#" class="btn btn-secondary editBtn" data-object-id="{{ task.id }}">Edit</a>
                                   <a href="#" class="btn btn-danger delBtn" data-object-id="{{ task.id }}">Delete</a>
                                 </div>
                             </div>
                             <div class="cb-bottom-right">
-                              <p> <span class="day-count">{{task.remaining_days}}</span><br>days remianing<p>
+                              <p>
+                                <span class="{% if task.priority == 'high' %} day-count-high {% else %} day-count {% endif %}">
+                                  {{task.remaining_days}}
+                                </span><br>days remianing
+                              </p>
                             </div>
                         </div>
                       </div>
@@ -64,7 +68,7 @@
                   <h3>High Priority</h3>
                     <div class=" row td-displEl">
                       {% for task in grouped_tasks.high_priority %}
-                        <div class="col-lg-4 task-card">
+                        <div class="col-lg-4 col-md-6 col-sm-12 task-card">
                             <div class="card{% include 'card_color.html' %}">
                                 <div class="card-header">
                                   <span class="title-txt">{{task.title}}</span>
@@ -79,12 +83,12 @@
                                             <p class="card-text-due">Due date: {{task.due_date}}</p>
                                           </div>
                                           <div>
-                                            <a href="#" class="btn btn-info editBtn" data-object-id="{{ task.id }}">Edit</a>
-                                            <a href="#" class="btn btn-danger delBtn" data-object-id="{{ task.id }}">Delete</a>
+                                            <a href="" class="btn btn-info editBtn" data-object-id="{{ task.id }}">Edit</a>
+                                            <a href="" class="btn btn-danger delBtn" data-object-id="{{ task.id }}">Delete</a>
                                           </div>
                                       </div>
                                       <div class="cb-bottom-right">
-                                        <p> <span class="day-count">{{task.remaining_days}}</span><br>days remianing<p>
+                                        <p><span class="day-count-high">{{task.remaining_days}}</span><br>days remianing<p>
                                       </div>
                                   </div>
                                 </div>
@@ -101,7 +105,7 @@
                   <h3>Medium Priority</h3>
                     <div class=" row td-displEl">
                       {% for task in grouped_tasks.medium_priority %}
-                        <div class="col-lg-4 task-card">
+                        <div class="col-lg-4 col-md-6 col-sm-12 task-card">
                             <div class="card{% include 'card_color.html' %}">
                                 <div class="card-header">
                                   <span class="title-txt">{{task.title}}</span>
@@ -138,7 +142,7 @@
                     <h3>Low Priority</h3>
                       <div class=" row td-displEl">
                         {% for task in grouped_tasks.low_priority %}
-                          <div class="col-lg-4 task-card">
+                          <div class="col-lg-4 col-md-6 col-sm-12 task-card">
                               <div class="card{% include 'card_color.html' %}">
                                   <div class="card-header">
                                     <span class="title-txt">{{task.title}}</span>

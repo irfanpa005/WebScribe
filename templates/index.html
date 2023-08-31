@@ -1,12 +1,13 @@
 {% extends 'indexbase.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block extra_styles %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block extrahead %}
-<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+    <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
 {{ block.super }}
 {% endblock %}
 
@@ -36,12 +37,12 @@
               <!-- paginator for shared noted -->  
               {% if notes.has_next %}
                 <div class="tm-text-right">
-                    <a href="?page={{ notes.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+                    <a href="?page_notes={{ notes.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
                 </div>
               {% endif %}
               {% if notes.has_previous %}
               <div class="tm-text-right">
-                  <a href="?page={{ notes.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+                  <a href="?page_notes={{ notes.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
               </div>
             {% endif %}
               <!-- paginator end --> 
@@ -66,23 +67,23 @@
                         </div>
 
                         <div class="tm-text-secondary tm-media-span tm-text-small">
-                            <span class="tm-text-left">Created By: {{ tutorial.owner }}</span>
+                            <span class="tm-text-left">Created By: {{ tutorial.tutorial_owner }}</span>
                             <span class="tm-text-right">{{ tutorial.created_at }}</span>
                         </div>
-                        
+                
                         <hr class="tm-hr tm-mr">
                     </div>
                 </div>
                 {% endfor %}
                 <!-- paginator for shared tutorials --> 
-              {% if tutorial.has_next %}
+              {% if tutorials.has_next %}
                 <div class="tm-text-right">
-                    <a href="?page={{ tutorial.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+                    <a href="?page_tutorials={{ tutorials.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
                 </div>
               {% endif %}
-              {% if notes.has_previous %}
+              {% if tutorials.has_previous %}
               <div class="tm-text-right">
-                  <a href="?page={{ tutorial.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+                  <a href="?page_tutorials={{ tutorials.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
               </div>
             {% endif %}
               <!-- paginator end --> 
@@ -110,8 +111,15 @@
                         <div class="form-group">
                             <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
                         </div>
-                        <input class="btn btn-primary" type="submit" value="Register">
+                        <input class="btn btn-primary form-control" type="submit" value="Register">
                     </form>
+
+                    <a href="{% provider_login_url 'google' %}" class="google-button-a">
+                    <button class="google-button">
+                        <img class="button-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Icon">
+                        <span>Sign in with Google</span>
+                    </button>
+                    </a>
                     {% for message in messages %}
                         <div class="text-white"><small>{{ message }}</small></div>
                     {% endfor %}
@@ -126,7 +134,6 @@
     <script src="{% static 'js/togglebar-index.js' %}"></script>
     <footer>
         {% block page_scripts %}
-
         {% endblock %}
     </footer> 
 {% endblock %}

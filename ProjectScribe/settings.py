@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,10 +27,13 @@ SECRET_KEY = 'django-insecure-oqx311x#h30rcc8(!3m*%ri9+$*sl79q0@s+6^^-2sx+1cgs^9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.108","127.0.0.1", "loachost"]
+ALLOWED_HOSTS = ["192.168.29.188","127.0.0.1", "loachost"]
 
 
 # Application definition
+
+SITE_ID = 1
+
 
 INSTALLED_APPS = [
     'notes',
@@ -39,6 +44,11 @@ INSTALLED_APPS = [
     'active_link',
     'crispy_forms',
     'crispy_bootstrap5',
+    'django.contrib.sites', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +56,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -220,3 +243,20 @@ AUTH_USER_MODEL = "userApp.User"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+
+SOCIALACCOUNT_LOGIN_ON_GET=True
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+LOGIN_REDIRECT_URL = reverse_lazy('userApp:google_redirect')
+LOGOUT_REDIRECT_URL = '/'
+

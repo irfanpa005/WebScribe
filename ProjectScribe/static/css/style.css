@@ -188,7 +188,7 @@ form > input{
  }
  
  .button-container>a{
-    padding: 3px 30px;
+    padding: 3px 25px;
     font-size: 0.9em;
     color: #ffffff;
     margin-right: 20px;
@@ -196,7 +196,7 @@ form > input{
  
  }
  .button-container>span{
-    padding: 5px 30px;
+    padding: 5px 25px;
     font-size: 1.2em;
     color: #f7e4e4;
     margin-left: 2vw;
@@ -214,4 +214,29 @@ form > input{
         margin-top: 20px;
         margin-right: 20px;
     }
+
+    .button-container>a{
+        padding: 3px 15px;
+        font-size: 0.7em;
+        color: #ffffff;
+        margin-right: 20px;
+        font-weight: bold;
+     
+     }
+     .button-container>span{
+        padding: 6px 15px;
+        font-size: 1.2em;
+        color: #f7e4e4;
+        margin-left: 7vw;
+     
+     }
+     
+     .button-container>span>label{
+        font-size: 15px;
+     }
+
+     .top-section{
+        padding: 0px 10px;
+     }
+    
 }
