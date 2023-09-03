@@ -160,3 +160,6 @@ def user_shared_tutorials(request,userName):
     single_page_tutorials = paginator_t.get_page(page_no_t)
 
     return render(request, 'usersharedtutorials.html',{'tutorials' :single_page_tutorials, 'search_keyword':search_keyword})
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)

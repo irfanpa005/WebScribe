@@ -82,3 +82,5 @@ def sort_tasks_desc(request,userName):
     form = TaskForm()
     return render (request, 'todo.html', {'alltasks' : tasks_descending, 'form':form})
 
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
