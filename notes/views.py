@@ -161,4 +161,9 @@ def tutorial_share_status(request, tuto_id):
     return JsonResponse({'message': 'Tutorial shared status updated successfully'})
 
 
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
+
+
+
 

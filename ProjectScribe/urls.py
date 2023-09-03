@@ -17,14 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler400
+
+handler404 = 'notes.views.custom_404_view'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('@dmin/', admin.site.urls),
     path('', include('userApp.urls')),
     path('notes/',include('notes.urls')),
     path('todo/',include('toDo.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('accounts/', include('allauth.urls')),
+    
 ]
 
 if settings.DEBUG:

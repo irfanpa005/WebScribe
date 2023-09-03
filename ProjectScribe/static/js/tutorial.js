@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded',function(){
         event.preventDefault();
         addTutWindow.style.display = "block";
         tutoFormTitle.textContent = `Add new Tutorial`;
-        addTutoButton.setAttribute("value", "Add Note");
+        addTutoButton.setAttribute("value", "Add Tutorial");
 
         document.getElementById('id_title').value = "";
         document.getElementById('id_short_descr').value = "";

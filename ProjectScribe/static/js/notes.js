@@ -128,6 +128,7 @@ notes.forEach(note => {
 
 shareToggle.addEventListener("change", function () {
    const noteID = this.dataset.objectId;
+   console.log(noteID)
    if (shareToggle.checked) {
       shareBtnLabel.textContent = "note shared"
       share_status_update(true)
@@ -138,7 +139,7 @@ shareToggle.addEventListener("change", function () {
 
    function share_status_update(status){
 
-   fetch(`notesharestatus/${noteID}`, {
+   fetch(`/notes/notesharestatus/${noteID}`, {
       method: "POST",
       headers: {
           "Content-type": "application/json",
