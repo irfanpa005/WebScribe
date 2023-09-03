@@ -150,6 +150,11 @@ h3{
     display: none;
 }
 
+.modal-header{
+    background-color: #962424;
+    color: rgb(255, 255, 255);
+ }
+
 @media all and (max-width:768px){
 
     .container{
@@ -176,8 +181,17 @@ h3{
 
     .card-text{
         height: 50px;
-        font-size: 10px;
+        font-size: 14px;
     }
     
+    @media all and (max-width:400px){
+
+        .pri-Row > ul >li{
+            padding: 5px 5px;
+            text-align: center;
+        }
+
+    }
+
 
 }

@@ -15,6 +15,9 @@
         <div id="left-col" class="tm-section">
             <!-- Shared notes left -->
             <div class="tm-section-col tm-content">
+                <div class="video-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-r6kFiN0X8M?si=2BoPXIq9DyGl1H0N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
                 <h3 class="tm-media-body">Shared Notes</h3>
                 {% for note in notes %}
                 <div class="tm-media">
@@ -40,7 +43,7 @@
                 </div>
               {% endif %}
               {% if notes.has_previous %}
-              <div class="tm-text-right">
+              <div class="tm-text-left">
                   <a href="?page={{ notes.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
               </div>
             {% endif %}
@@ -66,7 +69,7 @@
                         </div>
 
                         <div class="tm-text-secondary tm-media-span tm-text-small">
-                            <span class="tm-text-left">Created By: {{ tutorial.owner }}</span>
+                            <span class="tm-text-left">Created By: {{ tutorial.tutorial_owner }}</span>
                             <span class="tm-text-right">{{ tutorial.created_at }}</span>
                         </div>
                         
@@ -75,14 +78,14 @@
                 </div>
                 {% endfor %}
                 <!-- paginator for shared tutorials --> 
-              {% if tutorial.has_next %}
+              {% if tutorials.has_next %}
                 <div class="tm-text-right">
-                    <a href="?page={{ tutorial.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
+                    <a href="?page={{ tutorials.next_page_number }}" class="tm-btn tm-btn-next">Next</a>
                 </div>
               {% endif %}
               {% if notes.has_previous %}
-              <div class="tm-text-right">
-                  <a href="?page={{ tutorial.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
+              <div class="tm-text-left">
+                  <a href="?page={{ tutorials.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
               </div>
             {% endif %}
               <!-- paginator end --> 

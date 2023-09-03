@@ -207,6 +207,10 @@ form > input{
     font-size: 18px;
  }
 
+ .modal-header{
+    background-color: #962424;
+    color: rgb(255, 255, 255);
+ }
 
 
 @media (max-width:600px){

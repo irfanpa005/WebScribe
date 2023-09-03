@@ -12,10 +12,14 @@ class TaskForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit','Add Note'))
+        self.helper.add_input(Submit('submit','Add Task'))
 
 
-    due_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), validators=[MinValueValidator(limit_value=timezone.now().date())])
+    due_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date', 'min': timezone.now().date().isoformat()}),
+        validators=[MinValueValidator(limit_value=timezone.now().date())]
+            )
+    
     class Meta:
         model = Task
         fields = ['title', 'details', 'is_Active', 'priority','due_date']

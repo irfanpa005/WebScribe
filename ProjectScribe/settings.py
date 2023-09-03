@@ -27,13 +27,11 @@ SECRET_KEY = 'django-insecure-oqx311x#h30rcc8(!3m*%ri9+$*sl79q0@s+6^^-2sx+1cgs^9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.29.188","127.0.0.1", "loachost"]
+ALLOWED_HOSTS = ["192.168.0.110","127.0.0.1", "loachost"]
 
 
 # Application definition
-
 SITE_ID = 1
-
 
 INSTALLED_APPS = [
     'notes',
@@ -41,7 +39,6 @@ INSTALLED_APPS = [
     'toDo',
     'ckeditor',
     'ckeditor_uploader',
-    'active_link',
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.sites', 

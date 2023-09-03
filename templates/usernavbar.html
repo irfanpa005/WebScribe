@@ -1,5 +1,4 @@
 {% load static %}
-{% load active_link_tags %}
 <div class="nav-600">
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
         <i class="fa-solid fa-bars"></i>
@@ -17,28 +16,28 @@
 
         <li class="nav-item"><a href="{% url 'notes:notes' request.user.username %}"><img src="{% static 'images/logo3.png' %}" id="logo"></a></li>
         <li class="nav-item">
-            <a href="{{notes}}" class="nav-link {% active_link 'notes:notes' 'active-nav' %}">
+            <a href="{{notes}}" class="nav-link">
                 Notes
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{toDo}}" class="nav-link {% active_link 'toDo:allTasks' 'active-nav' %}">
+            <a href="{{toDo}}" class="nav-link">
                 ToDo Tasks
             </a>
 
         </li>
         <li class="nav-item">
-            <a href="{{tutorials}}"  class="nav-link {% active_link 'notes:tutorials' 'active-nav' strict=True %}">
+            <a href="{{tutorials}}"  class="nav-link">
                 Tutorials
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{userSharedNotes}}"  class="nav-link {% active_link 'userApp:userSharedNotes' 'active-nav' %}">
+            <a href="{{userSharedNotes}}"  class="nav-link">
                 Shared Notes
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{userSharedTutorials}}"  class="nav-link {% active_link 'userApp:userSharedTutorials' 'active-nav' %}">
+            <a href="{{userSharedTutorials}}"  class="nav-link">
                 Shared Tutorials
             </a>
         </li>

@@ -16,6 +16,9 @@
         <div id="left-col" class="tm-section">
             <!-- Shared notes left -->
             <div class="tm-section-col tm-content">
+                <div class="video-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-r6kFiN0X8M?si=2BoPXIq9DyGl1H0N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
                 <h3 class="tm-media-body">Shared Notes</h3>
                 {% for note in notes %}
                 <div class="tm-media">
@@ -41,7 +44,7 @@
                 </div>
               {% endif %}
               {% if notes.has_previous %}
-              <div class="tm-text-right">
+              <div class="tm-text-left">
                   <a href="?page_notes={{ notes.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
               </div>
             {% endif %}
@@ -82,7 +85,7 @@
                 </div>
               {% endif %}
               {% if tutorials.has_previous %}
-              <div class="tm-text-right">
+              <div class="tm-text-left">
                   <a href="?page_tutorials={{ tutorials.previous_page_number }}" class="tm-btn tm-btn-next">Previous</a>
               </div>
             {% endif %}
@@ -95,7 +98,6 @@
             <div class="tm-section-col tm-parallax" data-parallax="scroll" data-image-src="{% static 'images/bg-03.jpg' %}">
             </div>
                 <div class="registration-form">
-
                     <h2>Register</h2>
                     <form action="{% url 'userApp:registration'%}" method="POST">
                         {% csrf_token %}

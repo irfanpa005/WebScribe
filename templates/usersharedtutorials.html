@@ -8,7 +8,7 @@
 
 {% block body %}
 
-<main>
+<main class="mx-auto">
     <div class="container">
         <h3 class="tm-media-body sh-tutorials">Shared Tutorials</h3>
         <div class="form-section">
@@ -27,7 +27,7 @@
             {% for tutorial in tutorials %}
             <div class="col-lg-6">
                 <div class="tm-media-body-tut">
-                    <h5><a href="#" class="tm-text-title">{{tutorial.title}}</a></h5>
+                    <h6><a href="#" class="tm-text-title">{{tutorial.title}}</a></h6>
                     <p class="tm-text-small">{{tutorial.short_descr}}</p>
                     
             

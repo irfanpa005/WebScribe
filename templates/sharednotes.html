@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/shared_note_tut.css' %}">
 {% endblock %}
 
@@ -13,7 +14,7 @@
 
 {% block body %}
 <main>
-    <div class="container" style="margin-top: 80px;">
+    <div class="container">
         <h3 class="tm-media-body">Shared Notes</h3>
         <div class="form-section">
             <form action="" method="POST">
@@ -32,7 +33,7 @@
             <div class="col-lg-6">
                 <div class="tm-media">
                     <div class="tm-media-body">
-                        <h5><a href="{% url 'userApp:viewNote' note.pk %}" class="tm-text-title">{{note.title}}</a></h5>
+                        <h6><a href="{% url 'userApp:viewNote' note.pk %}" class="tm-text-title">{{note.title}}</a></h6>
                         <div id="iframe-container">
                             <iframe id="iframe-content" frameborder="0" srcdoc="{{note.content}}" style="padding: 0;"></iframe>
                             <a id="iframe-href" href="{% url 'userApp:viewNote' note.pk %}"></a>

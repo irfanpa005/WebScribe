@@ -11,7 +11,7 @@ class Task(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='allTasks')
     is_Active = models.BooleanField(default=True)
     created_at = models.DateField(default=timezone.now)
-    due_date = models.DateField(null=False, default=None,validators=[MinValueValidator(limit_value=timezone.now().date())])
+    due_date = models.DateField(null=False, default=None)
     priority = models.CharField(
         max_length=32,
         choices=[
@@ -28,6 +28,9 @@ class Task(models.Model):
         if self.due_date:
             today = timezone.now().date()
             remaining_days = (self.due_date - today).days
-            return remaining_days
+            if remaining_days < 0:
+                return "Overdue"
+            else:
+                return remaining_days
         else:
             return None

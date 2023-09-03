@@ -221,9 +221,6 @@ form > input{
      
 }
 
-
-
-
 @media (max-width: 1200px) {
 
     /* .tm-nav ul {
@@ -291,8 +288,6 @@ form > input{
 
 
 }
-
-
 
 
 @media (max-width: 1100px) {
@@ -402,20 +397,32 @@ form > input{
 }
 
 @media (max-width: 600px) {
+    .container{
+        margin-top: 40px;
+    }
+    
+    
+.tm-media-body {  padding-left: 0px; 
+}
     
     #logo-600{
-        height: 50px;
+        height: 60px;
         width: 100px;
-        background-color: #eae180;
         display: inline;
+        margin-right: 1em;
     }
     
+    
     .nav-600 {
-        display: flex; /* Use flexbox to align items horizontally */
-        align-items: center; /* Vertically center items */
-        justify-content: space-between; /* Space out items evenly */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #444;
+        z-index: 500;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
-
     .tm-nav { width: 0; }
     .tm-nav ul {
         position: relative;

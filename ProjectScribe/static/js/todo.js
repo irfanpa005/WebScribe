@@ -26,7 +26,7 @@ addtaskButton.addEventListener("click", function(event){
     event.preventDefault();
     addTaskWindow.style.display = "block";
     taskFormTitle.textContent = `Add new Task`
-    addNoteButton.setAttribute("value", "Add Note")
+    addNoteButton.setAttribute("value", "Add Task")
 
     document.getElementById('id_title').value = "";
     document.getElementById('id_details').value = "";
@@ -55,7 +55,7 @@ editButton.forEach(btn =>{
         addTaskWindow.style.display = "block";
         taskForm.setAttribute("action", url);
         taskFormTitle.textContent = `Edit Task`;
-        addNoteButton.setAttribute("value", "Update Note")
+        addNoteButton.setAttribute("value", "Update Task")
 
 
         fetch(`/todo/edit_task/${taskId}`, {

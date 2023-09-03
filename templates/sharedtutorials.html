@@ -13,8 +13,8 @@
 
 {% block body %}
 <main>
-    <div class="container" style="margin-top: 80px;">
-        <h3 class="tm-media-body sh-tutorials">Shared Tutorials</h3>
+    <div class="container">
+        <h3 class="tm-media-body">Shared Tutorials</h3>
         <div class="form-section">
             <form action="" method="POST">
                 {% csrf_token %}
@@ -31,7 +31,7 @@
             {% for tutorial in tutorials %}
             <div class="col-lg-6">
                 <div class="tm-media-body">
-                    <h5><a href="#" class="tm-text-title">{{tutorial.title}}</a></h5>
+                    <h6><a href="#" class="tm-text-title">{{tutorial.title}}</a></h6>
                     <p class="tm-text-small">{{tutorial.short_descr}}</p>
                     
             

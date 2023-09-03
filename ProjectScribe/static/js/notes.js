@@ -265,6 +265,7 @@ document.getElementById('searchform').addEventListener('submit',function(event){
          li.dataset.objectId = note.pk;
          noteDisplayUl.appendChild(li);
          li.addEventListener('click', viewNote);
+         li.addEventListener('click', closeSidebar);
 
          const firstNote = document.querySelector('.snote');
 
