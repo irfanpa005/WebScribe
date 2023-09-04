@@ -24,26 +24,26 @@ One of the most complex and unique aspects of our project is its collaborative n
 
 
 ## Project Structure
-notes app - Handles notes and tutorials functions of registered or signed in users.
-toDo app - Handles todo tasks of registered or signed in users.
+notes app - Handles notes and tutorials functions of registered or signed in users.<br>
+toDo app - Handles todo tasks of registered or signed in users.<br>
 userApp - Handles usercreation, authentication, shared datas to the non-registered users.
 
 ## Python packages used
-packages requirements are mentioned in 'requirements.txt' file.
+packages requirements are mentioned in 'requirements.txt' file.<br>
 
-django framework
+django framework<br>
 
-ck-editor - RichTextfield editor used for notes creation and editing.Settings are done in project settings.py. for any further updation or changes you can refer.
-https://pypi.org/project/django-ckeditor/
+ck-editor - RichTextfield editor used for notes creation and editing.Settings are done in project settings.py. for any further updation or changes you can refer.<br>
+https://pypi.org/project/django-ckeditor/<br>
 
-django-crispy-forms,crispy-bootstrap5
-makes to manage the django forms
-https://pypi.org/project/django-crispy-forms/
+django-crispy-forms,crispy-bootstrap5<br>
+makes to manage the django forms<br>
+https://pypi.org/project/django-crispy-forms/<br>
 
-django-allauth
-used for sign in using google or social media account. In addition to configuring in project, we will need to configure web application in google developer console for authentication and in social applications in django admin panel. please do refer.
-https://pypi.org/project/django-allauth/
-https://learndjango.com/tutorials/django-allauth-tutorial
+django-allauth<br>
+used for sign in using google or social media account. In addition to configuring in project, we will need to configure web application in google developer console for authentication and in social applications in django admin panel. please do refer.<br>
+https://pypi.org/project/django-allauth/<br>
+https://learndjango.com/tutorials/django-allauth-tutorial<br>
 
 ## Project hosted link
-http://webscribe.pythonanywhere.com/
+http://webscribe.pythonanywhere.com/<br>
