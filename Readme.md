@@ -4,10 +4,11 @@
 <ul>
   <li>Project Overview</li>
   <li>Distinctiveness and Complexity</li>
-  <li>Contributed Files</li>
-  <li>Installation</li>
+  <li>File structure</li>
   <li>How to Run</li>
-  <li>Python Packages</li>
+  <li>Additional Information</li>
+  <li>Project demonstration video</li>
+  <li>Project hosted link</li>
 </ul>
 
 ## Project Overview
@@ -32,6 +33,7 @@ Overview of file strucuture.
 │   ├───models.py - contains models for notes and tutorials.
 │   ├───forms.py - django forms for notes and tutorials.
 │   ├───views.py - views functionality for notes and tutorials.
+│   │───urls.py - defines the notes applcation's URL patterns and routes.
 │   │───...     
 │   └───
 │
@@ -55,6 +57,7 @@ Overview of file strucuture.
 │   ├───models.py - contains models for todo task.
 │   ├───forms.py - django forms for for todo task.
 │   ├───views.py - views functionality for todo task.
+│   │───urls.py - defines the toDo applcation's URL patterns and routes.
 │   └───...
 │
 ├───userApp - userApp app folder. userApp handles the user registration, google auth functionality, and page visibility functions for non-signed users.  
@@ -64,49 +67,43 @@ Overview of file strucuture.
 │   ├───views.py - views functionality for user creation and page visibility for non-signed users.
 │   ├───urls.py - the urls related to userApp and url to redirect user for google sign in.     
 │   └───...
+```
+
+## How to run
+1. Clone the git repository.
+2. Make sure Python is installed(version 3.11.1)
+2. Make Virtual environment for the project.
+2. Install Django framework, Modules and Packages.Django version used is 3.2.
+```bash
+pip install requirements.txt
+```
+3. Do make migrations from console
+```bash
+python manage.py makemigrations
+```
+4. Do migrate from console
+```bash
+python manage.py migrate
+```
+5. Run server
+```bash
+python manage.py runserver
+```
+6. Create a superuser to manage database and access admin panel.
+```bash
+python manage.py createsuperuser
+```
+
+## Additional Information
+ Python packages that need to be installed in order to run the web application, is mentioned in requirements.txt file!.
+
+ Project offers the convenience of Google authentication for user sign-in, making it easy for users to access their accounts. However, it's  optional and not a mandatory requirement for running the application. If you prefer not to use it, you have the flexibility to remove the Google sign-in button from the index.html HTML template. If you decide to enable Google authentication for Project instance, follow the steps in below url to set it up.<br>
+https://www.codesnail.com/google-authentication-in-django/
 
 
-#### 1. Note Creation
+## Project demonstration video<br>
+https://youtu.be/kvjaIvK3EMQ
 
-Note creation feature empowers users to document their thoughts, ideas, and important information with ease. Unlike many standalone note-taking applications, using a library called ck-editor helps user to create notes in a RichTextField which provides many text formatting facilities and media attaching and more features. User even have the option to share notes with the public, making knowledge sharing a breeze.
-
-#### 2. Todo Task Manager
-
-The todo task manager provides a dynamic and flexible approach to task management. Users can organize their tasks, set priorities, and track progress efficiently. Distinct from other task managers, task cards show the remaining days to complete task. Also tasks can be viewed on prioritized or grouped way.
-
-#### 3. Tutorials Section
-
-The reference section serves as a repository for tutorials, links, and other resources. User can share curated list of links with others, fostering a learning community. Never lose track of valuable resources again with our link-saving feature.
-
-### Collaborative Capabilities
-
-One of the most complex and unique aspects of our project is its collaborative nature. Users can share their notes, tasks, and references with other users, fostering teamwork and knowledge exchange. Collaborative features include:
-
-
-**User Authentication:** We've implemented secure user authentication to protect user data and privacy. Sigin for users i smade       simple by allowing users to sign in with their Google accounts.
-
-
-## Project Structure
-notes app - Handles notes and tutorials functions of registered or signed in users.<br>
-toDo app - Handles todo tasks of registered or signed in users.<br>
-userApp - Handles usercreation, authentication, shared datas to the non-registered users.
-
-## Python packages used
-packages requirements are mentioned in 'requirements.txt' file.<br>
-
-django framework<br>
-
-ck-editor - RichTextfield editor used for notes creation and editing.Settings are done in project settings.py. for any further updation or changes you can refer.<br>
-https://pypi.org/project/django-ckeditor/<br>
-
-django-crispy-forms,crispy-bootstrap5<br>
-makes to manage the django forms<br>
-https://pypi.org/project/django-crispy-forms/<br>
-
-django-allauth<br>
-used for sign in using google or social media account. In addition to configuring in project, we will need to configure web application in google developer console for authentication and in social applications in django admin panel. please do refer.<br>
-https://pypi.org/project/django-allauth/<br>
-https://learndjango.com/tutorials/django-allauth-tutorial<br>
 
 ## Project hosted link
 http://webscribe.pythonanywhere.com/<br>
