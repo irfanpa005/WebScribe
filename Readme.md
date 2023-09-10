@@ -9,6 +9,7 @@
   <li>Additional Information</li>
   <li>Project demonstration video</li>
   <li>Project hosted link</li>
+  <li>Acknowledgements</li>
 </ul>
 
 ## Project Overview
@@ -107,3 +108,7 @@ https://youtu.be/kvjaIvK3EMQ
 
 ## Project hosted link
 http://webscribe.pythonanywhere.com/<br>
+
+
+## Acknowledgements
+I would like to express my sincere gratitude to cs50, David J. Malan and Brian Yu for their excellent guidance and making complex concepts easy to understand through cs50 Web Programming with Python and Javascript.
