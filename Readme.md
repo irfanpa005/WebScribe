@@ -13,7 +13,7 @@
 </ul>
 
 ## Project Overview
-Webscribe is a versatile and feature-rich web application designed to cater to the diverse needs of continuous learners, information enthusiasts, and task managers. This application serves as your digital workspace, providing a unified solution for note-taking, tutorial and link saving, and task management.  Enjoy the convenience of rich text editing, allowing you to format your notes with headers, lists, images, and more. Users can also share the notes and tutorials with other users if they wish making knowledge sharing a breeze.
+Webscribe is a versatile web application designed to cater to the diverse needs of continuous learners, students, and task managers. This application serves as your digital workspace, providing a unified solution for note-taking, tutorial and link saving, and task management.  Enjoy the convenience of rich text editing, allowing you to format your notes with headers, lists, images, and more. Users can also share the notes and tutorials with other users if they wish making knowledge sharing a breeze.
 
 ## Distinctiveness and Complexity
 
