@@ -15,9 +15,9 @@
 ## Project Overview
 Webscribe is a versatile web application designed to cater to the diverse needs of continuous learners, students, and task managers. This application serves as your digital workspace, providing a unified solution for note-taking, tutorial link saving, and task management.  Enjoy the convenience of rich text editing, allowing you to format your notes with headers, lists, images, and more. Users can also share the notes and tutorials with other users if they wish making knowledge sharing a breeze.
 
-## Distinctiveness and Complexity
-
 My Motivation for this project was conceived from a passion for continuous learning and a recognition of the challenges faced by learners who need to take notes, save tutorials, and manage tasks effectively. I understand that all continuous learners benefit from a digital workspace to organize their knowledge and tasks efficiently. The desire to facilitate easy note-taking, tutorial saving, along with the ability to share these resources, inspired me to create this project. I believe that Webscribe provides a valuable tool for learners and knowledge enthusiasts seeking a comprehensive and user-friendly solution for their needs.
+
+## Distinctiveness and Complexity
 
 I believe that Webscribe is distinctive from other projects because, unlike other projects, Webscribe is a multifunctional platform that combines note-taking, tutorial saving, and task management within a single integrated platform, catering to continuous learners and information enthusiasts. Unlike social websites, where content is often public by default, the Webscribe platform empowers users to make their content private or public, providing robust privacy controls. In addition to Django authentication, social authentication, or Google authentication functionality is used to make user sign-in easy.
 
