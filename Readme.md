@@ -75,26 +75,24 @@ Overview of file structure.
 ## How to run
 1. Clone the git repository.
 2. Make sure Python is installed(version 3.11.1)
-2. Make a Virtual environment for the project.
-2. Install the Django framework, Modules, and Packages. Django version used is 3.2.
-```bash
-pip install requirements.txt
-```
-3. Do make migrations from console
-```bash
-python manage.py makemigrations
-```
-4. Do migrate from console
-```bash
-python manage.py migrate
-```
-5. Run server
-```bash
-python manage.py runserver
-```
+3. Make a Virtual environment for the project.
+4. Install the Django framework (Django version used is 3.2).
+5. Install all Packages added in 'requirements.txt'.
 6. Create a superuser to manage the database and access the admin panel.
 ```bash
 python manage.py createsuperuser
+``` 
+7. Do make migrations from console
+```bash
+python manage.py makemigrations
+```
+8. Do migrate from console
+```bash
+python manage.py migrate
+```
+9. Run server
+```bash
+python manage.py runserver
 ```
 
 ## Additional Information
@@ -105,7 +103,7 @@ https://www.codesnail.com/google-authentication-in-django/
 
 
 ## Project demonstration video<br>
-https://youtu.be/kvjaIvK3EMQ
+https://youtu.be/TFmnt0KTfVE
 
 
 ## Project hosted link
